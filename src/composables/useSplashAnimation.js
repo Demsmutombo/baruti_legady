@@ -3,7 +3,7 @@ import gsap from 'gsap'
 
 const TOTAL_PARTICLES_DESKTOP = 40
 const TOTAL_PARTICLES_MOBILE = 20
-export const SPLASH_DURATION = 4
+export const SPLASH_DURATION = 3
 
 function isMobile() {
   return window.matchMedia('(max-width: 768px)').matches
@@ -108,25 +108,25 @@ export function useSplashAnimation(refs, onComplete) {
       },
     })
 
-    // Phase 1 — Ouverture + zoom in (0 → ~1.7s)
+    // Phase 1 — Ouverture + zoom in (0 → ~1.3s)
     tl.to(
       ambientLight.value,
-      { opacity: 0.35, scale: 1, duration: 0.9, ease: 'power1.inOut' },
+      { opacity: 0.35, scale: 1, duration: 0.7, ease: 'power1.inOut' },
       0
     )
 
-    animateFloatingParticles(tl, particleElements, 0.07)
+    animateFloatingParticles(tl, particleElements, 0.05)
 
     tl.to(
       halo.value,
-      { opacity: 0.35, scale: 1, duration: 1, ease: 'power2.out' },
-      0.07
+      { opacity: 0.35, scale: 1, duration: 0.75, ease: 'power2.out' },
+      0.05
     )
 
     tl.to(
       logoStage.value,
-      { scale: 1, duration: 1.3, ease: 'power3.out' },
-      0.1
+      { scale: 1, duration: 1, ease: 'power3.out' },
+      0.08
     )
 
     tl.to(
@@ -134,67 +134,67 @@ export function useSplashAnimation(refs, onComplete) {
       {
         opacity: 1,
         filter: 'brightness(1) blur(0px) drop-shadow(0 0 20px rgba(201, 162, 39, 0.2))',
-        duration: 1.1,
+        duration: 0.85,
         ease: 'power3.out',
       },
-      0.13
+      0.1
     )
 
-    tl.set(glassesSweep.value, { opacity: 0.45 }, 0.85)
+    tl.set(glassesSweep.value, { opacity: 0.45 }, 0.65)
     tl.to(
       glassesSweep.value,
-      { xPercent: 350, duration: 0.6, ease: 'power2.inOut' },
-      0.85
+      { xPercent: 350, duration: 0.45, ease: 'power2.inOut' },
+      0.65
     )
 
     // Phase 2 — Textes
     tl.to(
       title.value,
-      { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' },
-      1.7
+      { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' },
+      1.3
     )
 
     tl.to(
       slogan.value,
-      { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' },
-      2.1
+      { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' },
+      1.6
     )
 
-    // Phase 3 — Fermeture + zoom out (3.1s → 4s)
+    // Phase 3 — Fermeture + zoom out (2.3s → 3s)
     tl.to(
       [title.value, slogan.value],
-      { opacity: 0, y: -10, duration: 0.35, ease: 'power2.in' },
-      3.1
+      { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' },
+      2.3
     )
 
     tl.to(
       logoStage.value,
-      { scale: 0.78, opacity: 0, duration: 0.6, ease: 'power2.in' },
-      3.15
+      { scale: 0.78, opacity: 0, duration: 0.45, ease: 'power2.in' },
+      2.35
     )
 
     tl.to(
       halo.value,
-      { scale: 0.85, opacity: 0, duration: 0.55, ease: 'power2.in' },
-      3.15
+      { scale: 0.85, opacity: 0, duration: 0.4, ease: 'power2.in' },
+      2.35
     )
 
     tl.to(
       particleElements,
-      { opacity: 0, duration: 0.4, stagger: 0.004, ease: 'power2.in' },
-      3.2
+      { opacity: 0, duration: 0.35, stagger: 0.004, ease: 'power2.in' },
+      2.4
     )
 
     tl.to(
       [ambientLight.value, stage.value],
-      { opacity: 0, duration: 0.45, ease: 'power2.in' },
-      3.35
+      { opacity: 0, duration: 0.4, ease: 'power2.in' },
+      2.5
     )
 
     tl.to(
       splash.value,
-      { opacity: 0, duration: 0.5, ease: 'power2.in' },
-      3.5
+      { opacity: 0, duration: 0.45, ease: 'power2.in' },
+      2.55
     )
 
     return tl
@@ -210,13 +210,13 @@ export function useSplashAnimation(refs, onComplete) {
       },
     })
 
-    tl.fromTo(logoStage.value, { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7 })
-    tl.fromTo(portrait.value, { opacity: 0 }, { opacity: 1, duration: 0.55 }, 0.13)
-    tl.fromTo(title.value, { opacity: 0 }, { opacity: 1, duration: 0.35 }, 1.7)
-    tl.fromTo(slogan.value, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.1)
-    tl.to(logoStage.value, { scale: 0.85, opacity: 0, duration: 0.5 }, 3.15)
-    tl.to(stage.value, { opacity: 0, duration: 0.35 }, 3.35)
-    tl.to(splash.value, { opacity: 0, duration: 0.45 }, 3.5)
+    tl.fromTo(logoStage.value, { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55 })
+    tl.fromTo(portrait.value, { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.1)
+    tl.fromTo(title.value, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.3)
+    tl.fromTo(slogan.value, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 1.6)
+    tl.to(logoStage.value, { scale: 0.85, opacity: 0, duration: 0.4 }, 2.35)
+    tl.to(stage.value, { opacity: 0, duration: 0.3 }, 2.5)
+    tl.to(splash.value, { opacity: 0, duration: 0.4 }, 2.55)
 
     return tl
   }
