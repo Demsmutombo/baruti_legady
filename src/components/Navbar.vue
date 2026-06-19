@@ -45,12 +45,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
           alt="Baruti Legacy Foundation"
           class="h-9 w-9 sm:h-10 sm:w-10 rounded-sm object-cover object-top shrink-0"
         />
-        <div class="flex flex-col leading-tight">
-          <span class="font-heading text-gold text-[10px] sm:text-xs tracking-widest uppercase">Baruti Legacy</span>
-          <span class="font-display text-white text-base sm:text-lg font-semibold group-hover:text-gold-light transition-colors">
-            Foundation
-          </span>
-        </div>
+        <span class="font-display text-white text-base sm:text-lg font-semibold group-hover:text-gold-light transition-colors leading-tight">
+          Baruti Legacy
+        </span>
       </RouterLink>
 
       <ul class="hidden xl:flex items-center gap-1">
