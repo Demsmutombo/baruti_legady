@@ -22,7 +22,25 @@
       ]
     },
     {
-      "source": "/(.*\\.(png|jpg|jpeg|svg|webp|ico))",
+      "source": "/logo.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/favicon.svg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/icons.svg",
       "headers": [
         {
           "key": "Cache-Control",
