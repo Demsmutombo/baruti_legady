@@ -1,208 +1,137 @@
 export const pastor = {
   fullName: "Pasteur Léonard Baruti Kasongo Bin N'djadi",
   shortName: "Pasteur Baruti Kasongo",
-  title: "Révérend, Fondateur de Baruti Tabernacle",
+  title: "Révérend, Fondateur de Baruti Tabernacle ",
+  nickname: "L'homme de la relève",
   quote:
     "La foi n'est pas le déni de la réalité, c'est la confiance en Celui qui la transcende.",
-  birthYear: 1945,
+  birthDate: "24 janvier 1947",
+  birthPlace: "Kinshasa, RDC",
+  deathDate: "1er juin 2024",
+  deathPlace: "Montréal, Canada",
+  birthYear: 1947,
   homeYear: 2024,
+  ministryStart: "24 janvier 1973",
+  message:
+    "Soldat du Christ, parmi les premiers croyants du message en RDC et la première génération des serviteurs du message de l'heure du Prophète William Marrion Branham. Plus de 50 ans de ministère pastoral.",
+  obituaryIntro:
+    "La disparition du Pasteur Léonard Baruti Kasongo Bin N'djadi, survenue le samedi 1er juin 2024 à Montréal au Canada, a bouleversé la grande famille chrétienne congolaise, singulièrement les branhamistes, ainsi que les Congolais de toutes confessions.",
 }
 
 export const highlights = [
   {
     icon: "✝",
-    title: "Foi",
+    title: "Message de l'heure",
     description:
-      "Un message ancré dans la Parole de Dieu, transmis avec conviction et amour pour l'Église universelle.",
+      "Plus de 50 ans à prêcher le message du Prophète William Marrion Branham en République Démocratique du Congo et dans le monde.",
   },
   {
     icon: "🕊",
-    title: "Guérison",
+    title: "Guérison & miracles",
     description:
-      "Des milliers de vies transformées par la puissance de la prière et l'onction du Saint-Esprit.",
+      "Des milliers de guérisons, délivrances et miracles attestés — résurrections, nature obéissante, malades guéris au nom de Jésus.",
   },
   {
     icon: "🌍",
     title: "Évangélisation mondiale",
     description:
-      "Des campagnes sur plusieurs continents, portant l'Évangile au-delà des frontières.",
-  },
-]
-
-export const biographyEvents = [
-  {
-    year: "1945",
-    title: "Naissance et origines",
-    description:
-      "Né en République Démocratique du Congo, dans une famille où la spiritualité et les valeurs chrétiennes occupaient une place centrale.",
-  },
-  {
-    year: "1950s",
-    title: "Enfance",
-    description:
-      "Une jeunesse marquée par la curiosité spirituelle, l'écoute des Écritures et un profond respect pour la tradition chrétienne congolaise.",
-  },
-  {
-    year: "1960s",
-    title: "Études",
-    description:
-      "Formation académique et théologique, consolidant les fondements intellectuels de son futur ministère pastoral.",
-  },
-  {
-    year: "1970",
-    title: "Conversion spirituelle",
-    description:
-      "Rencontre personnelle avec Jésus-Christ, moment fondateur qui orienta définitivement le cours de sa vie.",
-  },
-  {
-    year: "1975",
-    title: "Appel au ministère",
-    description:
-      "Réponse claire à l'appel divin, avec un engagement total au service de l'Évangile et des âmes.",
-  },
-  {
-    year: "1980",
-    title: "Fondation de Baruti Tabernacle",
-    description:
-      "Création de l'église Baruti Tabernacle à Kinshasa, berceau d'un ministère qui s'étendrait à l'international.",
-  },
-  {
-    year: "1990–2020",
-    title: "Expansion internationale",
-    description:
-      "Campagnes d'évangélisation en RDC, Brésil, Australie et dans de nombreuses nations, formant des leaders et des communautés de foi.",
-  },
-  {
-    year: "2024",
-    title: "Retour auprès du Père",
-    description:
-      "Hommage éternel à un serviteur fidèle dont l'héritage spirituel continue d'inspirer des générations entières.",
-  },
-]
-
-export const campaigns = [
-  {
-    region: "RDC — Kinshasa",
-    country: "République Démocratique du Congo",
-    description: "Grande campagne d'évangélisation au cœur de la capitale, des milliers de convertis.",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80",
-  },
-  {
-    region: "RDC — Mbandaka",
-    country: "République Démocratique du Congo",
-    description: "Mission dans la province de l'Équateur, portant l'espoir aux communautés riveraines.",
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c797e1a6?w=600&q=80",
-  },
-  {
-    region: "RDC — Kahemba",
-    country: "République Démocratique du Congo",
-    description: "Évangélisation dans le Kasaï, avec des miracles de guérison rapportés par les fidèles.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
-  },
-  {
-    region: "Brésil",
-    country: "Amérique du Sud",
-    description: "Conférences et crusades dans plusieurs villes brésiliennes, unissant les communautés lusophones.",
-    image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80",
-  },
-  {
-    region: "Australie",
-    country: "Océanie",
-    description: "Ministère auprès de la diaspora africaine et des communautés chrétiennes locales.",
-    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&q=80",
-  },
-  {
-    region: "Autres nations",
-    country: "Monde entier",
-    description: "Missions en Europe, Afrique de l'Ouest et Amérique du Nord, semant la Parole de Dieu.",
-    image: "https://images.unsplash.com/photo-1507692049790-de582cc9ef34?w=600&q=80",
-  },
-]
-
-export const testimonies = [
-  {
-    name: "Marie K.",
-    location: "Kinshasa, RDC",
-    category: "guérison",
-    text: "Après des années de maladie, une prière du Pasteur Baruti m'a rendue la santé. Ma famille a connu la puissance de Dieu ce jour-là.",
-  },
-  {
-    name: "João S.",
-    location: "São Paulo, Brésil",
-    category: "conversion",
-    text: "Sa prédication m'a touché au cœur. J'ai accepté Jésus-Christ et ma vie a été transformée du jour au lendemain.",
-  },
-  {
-    name: "Grace M.",
-    location: "Sydney, Australie",
-    category: "foi",
-    text: "Le message de foi du Pasteur Baruti m'a appris à tenir bon dans l'épreuve. Son enseignement reste vivant en moi.",
-  },
-  {
-    name: "Emmanuel T.",
-    location: "Mbandaka, RDC",
-    category: "guérison",
-    text: "Un miracle s'est produit lors de la campagne. Ce témoignage est gravé dans notre communauté pour toujours.",
-  },
-  {
-    name: "Pastor David L.",
-    location: "Londres, UK",
-    category: "ministère",
-    text: "Il m'a formé spirituellement et m'a transmis une vision claire du ministère prophétique et pastoral.",
+      "Campagnes en RDC, Brésil, Australie et dans de nombreuses provinces — Kahemba, Mbandaka, Boende, Gemena, Kinshasa et au-delà.",
   },
 ]
 
 export const teachings = [
   {
-    title: "La prière",
+    year: "2020",
+    title: "Le Premier Sceau",
+    date: "25 novembre 2020",
     excerpt:
-      "La prière est le souffle de l'âme chrétienne. Sans elle, la foi s'éteint ; avec elle, les montagnes se déplacent.",
-    quote: "Priez sans cesse. — 1 Thessaloniciens 5:17",
+      "Prédication visionnaire articulant révélations bibliques, mystères divins et prophéties. Le Pasteur liait les vérités intemporelles aux réalités quotidiennes, appelant à la foi, la prière et le soutien mutuel face aux défis de l'époque.",
+    quote: "Celui qui a des oreilles, qu'il entende ce que l'Esprit dit aux Églises.",
   },
   {
+    year: "",
+    title: "La Prière",
+    date: "Prêché au Baruti Tabernacle",
+    excerpt:
+      "La prière n'est pas une simple pratique religieuse, mais un moyen de communion avec Dieu. Le Révérend exhortait à une vie de prière constante, clé qui ouvre la porte à l'intervention divine dans l'impossible.",
+    quote: "Demandez, et vous recevrez ; cherchez, et vous trouverez. — Matthieu 7:7",
+  },
+  {
+    year: "",
     title: "La foi",
     excerpt:
-      "La foi est la substance des choses qu'on espère, la démonstration de celles qu'on ne voit pas. Elle ouvre les portes de l'impossible.",
-    quote: "La foi vient de ce qu'on entend. — Romains 10:17",
+      "La foi est la substance des choses qu'on espère. Le Pasteur Baruti vécut cette foi de manière tangible — des miracles accompagnaient ceux qui croyaient, selon Marc 16:17-18.",
+    quote: "La foi vient de ce qu'on entend, et ce qu'on entend vient de la Parole de Dieu. — Romains 10:17",
   },
   {
-    title: "Le Saint-Esprit",
-    excerpt:
-      "Le Saint-Esprit est notre Consolateur, notre guide et la source de toute onction véritable dans le ministère.",
-    quote: "Vous recevrez une puissance. — Actes 1:8",
-  },
-  {
+    year: "",
     title: "Le salut",
     excerpt:
-      "Le salut est un don gratuit de Dieu, reçu par la foi en Jésus-Christ, seul Sauveur et Seigneur.",
-    quote: "Car c'est par la grâce que vous êtes sauvés. — Éphésiens 2:8",
+      "Le plus grand miracle demeure le salut de l'âme. Chaque campagne était avant tout une occasion d'appeler les hommes à la repentance et à la foi en Jésus-Christ, seul Sauveur.",
+    quote: "Car c'est par la grâce que vous êtes sauvés, par le moyen de la foi. — Éphésiens 2:8",
   },
   {
-    title: "Messages prophétiques",
+    year: "",
+    title: "Le message prophétique",
     excerpt:
-      "Dieu parle encore à Son peuple. Les messages prophétiques éclairent le chemin et préparent l'Église aux temps à venir.",
-    quote: "Celui qui a des oreilles, qu'il entende. — Apocalypse 2:7",
+      "Prédicateur visionnaire mêlant spiritualité, actualité sociale et réflexions culturelles. Ses messages invitaient à l'introspection spirituelle et à la responsabilité devant Dieu.",
+    quote: "Jésus-Christ est le même hier, aujourd'hui et éternellement. — Hébreux 13:8",
   },
 ]
 
 export const hommages = [
   {
+    author: "Père Blaise Kanda",
+    role: "Prêtre catholique",
+    message:
+      "Le Révérend Pasteur Baruti Kasongo n'est plus de ce monde. Que son âme repose en paix ! Que Dieu l'accueille dans son Royaume. Nos sincères condoléances à sa famille biologique et à toute son Église.",
+  },
+  {
     author: "Église Baruti Tabernacle",
-    role: "Communauté fidèle",
+    role: "Communauté fidèle — Righini, Ngaliema",
     message:
-      "Notre Père spirituel, tu nous as enseigné à aimer Dieu et à servir les hommes. Ton héritage vivra éternellement dans nos cœurs.",
+      "Notre Père spirituel, tu nous as enseigné à aimer Dieu et à servir les hommes pendant plus de cinq décennies. Ton héritage vivra éternellement dans nos cœurs.",
   },
   {
-    author: "Conseil Pastoral",
-    role: "Leaders de l'église",
+    author: "Église du message — RDC",
+    role: "Assemblées Chrétiennes du Message du Temps de la Fin",
     message:
-      "En toi, nous avons vu un exemple de fidélité, de courage et de grâce. Que ton âme repose en paix auprès du Seigneur.",
+      "L'église du message de la République Démocratique du Congo est en deuil. Leonard Baruti Kasongo a marqué l'histoire de l'église Branhamiste pendant plus de 50 ans.",
   },
   {
-    author: "Famille Kasongo",
-    role: "Proches",
+    author: "Famille Kasongo — Bazenga",
+    role: "Épouse et enfants",
     message:
-      "Papa, tu étais notre rocher. Ta sagesse, ta prière et ton amour continueront de guider notre famille pour les générations à venir.",
+      "Papa, tu étais notre rocher. Marié à Mme Bazenga Alphoncine, père de plusieurs enfants, ta sagesse et ta prière continueront de guider notre famille pour les générations à venir.",
+  },
+  {
+    author: "Baruti Legacy Foundation",
+    role: "Mémorial officiel",
+    message:
+      "Un homme de foi, tel qu'il est dit : les miracles accompagneront ceux qui auront cru. Réellement, Dieu nous avait visité à travers ce serviteur fidèle. Que son âme repose en paix.",
+  },
+]
+
+export const ministrySections = [
+  {
+    title: "Baruti Tabernacle",
+    content:
+      "Depuis 1990, le Pasteur Baruti dirige l'église Baruti Tabernacle, anciennement Assemblée chrétienne de Righini, située dans la commune de Ngaliema à l'Ouest de Kinshasa. Berceau d'un ministère qui s'étend sur plusieurs continents.",
+  },
+  {
+    title: "Le message de l'heure",
+    content:
+      "Parmi les premiers croyants du message en RDC, le Révérend Baruti Kasongo fut durant plus de 50 ans le pasteur du message du temps de la fin du Prophète William Marrion Branham. Évêque Général des Assemblées Chrétiennes du Message du Temps de la Fin (ACMTF).",
+  },
+  {
+    title: "Formation de serviteurs",
+    content:
+      "Sous son ministère appuyé par l'Évangile de Jésus-Christ, il forma plusieurs pasteurs et contribua à la conversion de milliers de personnes en RDC et à travers le monde. Surnommé « L'homme de la relève » par les fidèles.",
+  },
+  {
+    title: "Trois clés du ministère",
+    content:
+      "Dieu lui avait confié trois clés, dont celle de prier pour les malades afin qu'ils soient guéris. Des milliers de témoignages — guérisons, résurrections, miracles — sont enregistrés et continuent d'édifier les générations.",
   },
 ]
 
@@ -215,19 +144,19 @@ export const galleryCategories = [
 ]
 
 export const galleryItems = [
-  { id: 1, category: "campaigns", caption: "Crusade à Kinshasa", image: "https://images.unsplash.com/photo-1507692049790-de582cc9ef34?w=400&q=80" },
-  { id: 2, category: "church", caption: "Baruti Tabernacle", image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&q=80" },
-  { id: 3, category: "historical", caption: "Première convention", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80" },
-  { id: 4, category: "international", caption: "Mission au Brésil", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&q=80" },
-  { id: 5, category: "campaigns", caption: "Évangélisation Mbandaka", image: "https://images.unsplash.com/photo-1489392191049-fc10c797e1a6?w=400&q=80" },
-  { id: 6, category: "international", caption: "Conférence Australie", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&q=80" },
-  { id: 7, category: "church", caption: "Culte dominical", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" },
-  { id: 8, category: "historical", caption: "Ordination pastorale", image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80" },
+  { id: 1, category: "campaigns", caption: "Campagne Docteur Jésus — Kinshasa 2016", image: "https://images.unsplash.com/photo-1507692049790-de582cc9ef34?w=400&q=80" },
+  { id: 2, category: "church", caption: "Baruti Tabernacle — Righini", image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&q=80" },
+  { id: 3, category: "historical", caption: "Ministère depuis 1973", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80" },
+  { id: 4, category: "international", caption: "Campagne Brésil 2015", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&q=80" },
+  { id: 5, category: "campaigns", caption: "Évangélisation Mbandaka 2017", image: "https://images.unsplash.com/photo-1489392191049-fc10c797e1a6?w=400&q=80" },
+  { id: 6, category: "international", caption: "Campagne Australie 2015", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&q=80" },
+  { id: 7, category: "campaigns", caption: "Kahemba 2022", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" },
+  { id: 8, category: "historical", caption: "Pasteur élu — Righini 1990", image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80" },
 ]
 
 export const contact = {
   church: "Baruti Tabernacle",
-  address: "Kinshasa, République Démocratique du Congo",
+  address: "Quartier Righini, commune de Ngaliema, Kinshasa, RDC",
   email: "contact@barutilegacy.org",
   social: [
     { name: "Facebook", url: "#" },
@@ -235,3 +164,18 @@ export const contact = {
     { name: "Instagram", url: "#" },
   ],
 }
+
+export {
+  biographyEssentials,
+  nameMeanings,
+  biographyChapters,
+  biographyEvents,
+} from './biography.js'
+
+export { campaigns } from './campaigns.js'
+
+export {
+  testimonies,
+  testimonyFilters,
+  testimonyCategoryLabels,
+} from './testimonies.js'

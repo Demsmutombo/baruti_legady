@@ -17,7 +17,7 @@ onMounted(() => AOS.refresh())
           Enseignements
         </h1>
         <p class="text-white/80 text-lg" data-aos="fade-up" data-aos-delay="200">
-          Les fondements spirituels transmis par le Pasteur Baruti Kasongo.
+          Prédications et messages spirituels transmis par le Révérend Pasteur Baruti Kasongo.
         </p>
       </div>
     </section>
@@ -31,7 +31,16 @@ onMounted(() => AOS.refresh())
           data-aos="fade-up"
           :data-aos-delay="index * 80"
         >
-          <h2 class="font-display text-2xl font-bold text-deep-blue mb-4">{{ item.title }}</h2>
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <h2 class="font-display text-2xl font-bold text-deep-blue">{{ item.title }}</h2>
+            <span
+              v-if="item.year"
+              class="text-xs font-heading uppercase tracking-widest bg-gold/15 text-gold px-3 py-1 rounded-full"
+            >
+              {{ item.year }}
+            </span>
+          </div>
+          <p v-if="item.date" class="text-sm text-muted mb-4">{{ item.date }}</p>
           <p class="text-muted leading-relaxed mb-6">{{ item.excerpt }}</p>
           <blockquote class="border-l-4 border-gold pl-4 text-deep-blue/80 italic font-display">
             {{ item.quote }}

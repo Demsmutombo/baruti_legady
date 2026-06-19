@@ -22,6 +22,16 @@ onMounted(() => AOS.refresh())
       </div>
     </section>
 
+    <section class="py-12 bg-gold/10 border-y border-gold/20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-aos="fade-up">
+        <h2 class="font-display text-xl font-bold text-deep-blue mb-3">Livre de condoléances</h2>
+        <p class="text-muted leading-relaxed">
+          Le livre de condoléances est disponible avec les plans Famille et Héritage.
+          Laissez un message en mémoire du Révérend Pasteur Baruti Kasongo.
+        </p>
+      </div>
+    </section>
+
     <section class="py-20 bg-soft-gray">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <article

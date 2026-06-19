@@ -28,11 +28,19 @@ import { pastor } from '../data/content.js'
       </h1>
 
       <p
-        class="text-gold-light text-lg sm:text-xl font-heading tracking-wide mb-8"
+        class="text-gold-light text-lg sm:text-xl font-heading tracking-wide mb-2"
         data-aos="fade-up"
         data-aos-delay="200"
       >
         {{ pastor.title }}
+      </p>
+
+      <p
+        class="text-white/70 font-display text-base sm:text-lg mb-8"
+        data-aos="fade-up"
+        data-aos-delay="250"
+      >
+        {{ pastor.birthYear }} — {{ pastor.homeYear }} · {{ pastor.nickname }}
       </p>
 
       <blockquote

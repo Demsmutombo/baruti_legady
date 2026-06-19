@@ -6,7 +6,7 @@ import { biographyEvents } from '../data/content.js'
   <div class="relative timeline-line py-8">
     <div
       v-for="(event, index) in biographyEvents"
-      :key="event.year"
+      :key="`${event.year}-${event.title}`"
       class="relative mb-12 md:mb-16"
       data-aos="fade-up"
       :data-aos-delay="index * 80"

@@ -2,44 +2,38 @@
 import { ref, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { testimonies } from '../data/content.js'
+import {
+  testimonies,
+  testimonyFilters,
+  testimonyCategoryLabels,
+} from '../data/content.js'
 
 const modules = [Navigation, Pagination, Autoplay]
 const activeFilter = ref('all')
-
-const filters = [
-  { id: 'all', label: 'Tous' },
-  { id: 'guérison', label: 'Guérison' },
-  { id: 'conversion', label: 'Conversion' },
-  { id: 'foi', label: 'Foi' },
-  { id: 'ministère', label: 'Ministère' },
-]
 
 const filtered = computed(() =>
   activeFilter.value === 'all'
     ? testimonies
     : testimonies.filter((t) => t.category === activeFilter.value)
 )
-
-const categoryLabels = {
-  guérison: 'Guérison',
-  conversion: 'Conversion',
-  foi: 'Foi',
-  ministère: 'Ministère',
-}
 </script>
 
 <template>
   <div>
+    <p class="text-center text-muted mb-8 max-w-2xl mx-auto">
+      Ce que disent ceux qui ont connu Leonard Baruti — 12 témoignages de miracles,
+      de foi et de puissance divine au travers de son ministère.
+    </p>
+
     <div class="flex flex-wrap justify-center gap-2 mb-10">
       <button
-        v-for="filter in filters"
+        v-for="filter in testimonyFilters"
         :key="filter.id"
         :class="[
           'px-4 py-2 text-sm rounded-full transition-colors',
           activeFilter === filter.id
             ? 'bg-gold text-deep-blue font-medium'
-            : 'bg-soft-gray text-muted hover:bg-gold/20',
+            : 'bg-white text-muted hover:bg-gold/20 border border-gray-100',
         ]"
         @click="activeFilter = filter.id"
       >
@@ -57,18 +51,15 @@ const categoryLabels = {
       :breakpoints="{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }"
       class="testimonies-swiper pb-12"
     >
-      <SwiperSlide v-for="item in filtered" :key="item.name + item.location">
-        <div class="card-hover bg-white border border-gray-100 rounded-lg p-6 h-full shadow-sm">
-          <span class="inline-block text-xs font-medium text-gold uppercase tracking-wider mb-4">
-            {{ categoryLabels[item.category] || item.category }}
+      <SwiperSlide v-for="item in filtered" :key="item.title">
+        <div class="card-hover bg-white border border-gray-100 rounded-lg p-6 h-full shadow-sm flex flex-col">
+          <span class="inline-block text-xs font-medium text-gold uppercase tracking-wider mb-3">
+            {{ testimonyCategoryLabels[item.category] || item.category }}
           </span>
-          <p class="text-deep-blue/80 italic leading-relaxed mb-6">
-            « {{ item.text }} »
+          <h3 class="font-display text-lg font-bold text-deep-blue mb-3">{{ item.title }}</h3>
+          <p class="text-deep-blue/80 leading-relaxed flex-grow">
+            {{ item.text }}
           </p>
-          <div class="border-t border-gray-100 pt-4">
-            <p class="font-semibold text-deep-blue">{{ item.name }}</p>
-            <p class="text-sm text-muted">{{ item.location }}</p>
-          </div>
         </div>
       </SwiperSlide>
     </Swiper>

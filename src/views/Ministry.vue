@@ -1,31 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
 import AOS from 'aos'
+import { ministrySections, pastor, biographyEssentials } from '../data/content.js'
 
 onMounted(() => AOS.refresh())
-
-const sections = [
-  {
-    title: 'Fondation Baruti Tabernacle',
-    content:
-      "Fondée à Kinshasa, l'église Baruti Tabernacle est née de la vision du Pasteur Baruti Kasongo : créer une communauté où la Parole de Dieu est enseignée avec puissance, où la prière est une priorité et où chaque âme peut rencontrer le Seigneur.",
-  },
-  {
-    title: 'Vision du message',
-    content:
-      "Le message central du ministère repose sur la foi vivante, la guérison divine, l'onction du Saint-Esprit et l'évangélisation sans frontières. Une doctrine ancrée dans les Écritures, transmise avec amour et autorité spirituelle.",
-  },
-  {
-    title: "Organisation de l'église",
-    content:
-      "Baruti Tabernacle est structurée autour d'un conseil pastoral, de départements ministériels (jeunesse, femmes, hommes, louange) et de cellules de prière qui perpétuent l'œuvre d'évangélisation au quotidien.",
-  },
-  {
-    title: 'Expansion internationale',
-    content:
-      "Au fil des décennies, le ministère s'est étendu au-delà de la RDC : missions au Brésil, en Australie, en Europe et en Afrique de l'Ouest. Des églises filiales et des partenariats pastoraux portent l'héritage Baruti dans le monde entier.",
-  },
-]
 </script>
 
 <template>
@@ -39,7 +17,10 @@ const sections = [
           Baruti Tabernacle
         </h1>
         <p class="text-white/80 text-lg" data-aos="fade-up" data-aos-delay="200">
-          Une œuvre spirituelle fondée sur la Parole, la prière et l'évangélisation mondiale.
+          {{ biographyEssentials.fullTitle }}
+        </p>
+        <p class="text-gold-light mt-4 font-heading" data-aos="fade-up" data-aos-delay="250">
+          {{ pastor.nickname }} · Ministère depuis {{ pastor.ministryStart }}
         </p>
       </div>
     </section>
@@ -47,7 +28,7 @@ const sections = [
     <section class="py-20">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <article
-          v-for="(section, index) in sections"
+          v-for="(section, index) in ministrySections"
           :key="section.title"
           class="flex flex-col md:flex-row gap-8 items-start"
           data-aos="fade-up"

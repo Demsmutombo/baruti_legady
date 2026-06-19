@@ -18,7 +18,7 @@ const displayed = computed(() =>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <article
         v-for="(campaign, index) in displayed"
-        :key="campaign.region"
+        :key="`${campaign.year}-${campaign.region}`"
         class="card-hover group relative overflow-hidden rounded-lg bg-deep-blue shadow-md"
         data-aos="fade-up"
         :data-aos-delay="index * 100"
@@ -33,7 +33,9 @@ const displayed = computed(() =>
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-deep-blue via-deep-blue/60 to-transparent" />
         <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <p class="text-gold text-xs uppercase tracking-wider mb-1">{{ campaign.country }}</p>
+          <p class="text-gold text-xs uppercase tracking-wider mb-1">
+            {{ campaign.year }} · {{ campaign.country }}
+          </p>
           <h3 class="font-display text-xl font-bold mb-2">{{ campaign.region }}</h3>
           <p class="text-white/80 text-sm leading-relaxed">{{ campaign.description }}</p>
         </div>

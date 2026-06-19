@@ -21,10 +21,11 @@ onMounted(() => AOS.refresh())
           Un ministère au service de l'Évangile
         </h2>
         <p class="text-muted leading-relaxed text-lg" data-aos="fade-up" data-aos-delay="100">
-          Le Pasteur {{ pastor.shortName }} a consacré sa vie à prêcher la Parole de Dieu,
-          à guérir les cœurs brisés et à étendre le Royaume de Dieu sur toute la terre.
-          Son héritage continue à inspirer l'Église Baruti Tabernacle et des milliers de fidèles
-          à travers le monde.
+          {{ pastor.obituaryIntro }}
+          Soldat du Christ et {{ pastor.nickname }}, le Révérend {{ pastor.shortName }}
+          a consacré plus de 50 ans au message du Prophète William Marrion Branham,
+          formant des pasteurs et conduisant des milliers d'âmes à Jésus-Christ
+          depuis Baruti Tabernacle et à travers le monde.
         </p>
       </div>
     </section>
