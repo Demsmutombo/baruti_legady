@@ -103,7 +103,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
         </span>
         <span
           :class="[
-            'hidden font-display text-base font-semibold leading-tight transition-colors sm:inline sm:text-lg',
+            'font-display text-sm font-semibold leading-tight transition-colors sm:text-lg',
             isDark
               ? 'text-white group-hover:text-gold-light'
               : 'text-deep-blue group-hover:text-gold',
