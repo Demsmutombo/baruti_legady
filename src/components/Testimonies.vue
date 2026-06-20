@@ -69,8 +69,19 @@ const filtered = computed(() =>
 <style scoped>
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev) {
-  color: #c9a227;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: 0;
+  color: transparent;
+  opacity: 0;
+  pointer-events: auto;
 }
+
+:deep(.swiper-button-next::after),
+:deep(.swiper-button-prev::after) {
+  font-size: 0;
+}
+
 :deep(.swiper-pagination-bullet-active) {
   background: #c9a227;
 }

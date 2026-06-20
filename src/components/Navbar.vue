@@ -89,11 +89,18 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   >
     <nav class="max-w-7xl mx-auto flex min-w-0 items-center gap-2 px-4 sm:gap-3 sm:px-6 lg:px-8 xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center xl:gap-4">
       <RouterLink to="/" class="group flex shrink-0 items-center gap-2 sm:gap-3" @click="closeMenu">
-        <img
-          :src="logoSrc"
-          alt="Baruti Legacy Foundation"
-          class="h-12 w-12 shrink-0 rounded-full object-cover object-top sm:h-14 sm:w-14"
-        />
+        <span
+          :class="[
+            'flex h-11 w-11 shrink-0 items-center justify-center rounded-full sm:h-12 sm:w-12',
+            isDark ? '' : 'bg-deep-blue p-[2px]',
+          ]"
+        >
+          <img
+            :src="logoSrc"
+            alt="Baruti Legacy Foundation"
+            class="h-full w-full rounded-full object-cover object-top"
+          />
+        </span>
         <span
           :class="[
             'hidden font-display text-base font-semibold leading-tight transition-colors sm:inline sm:text-lg',
