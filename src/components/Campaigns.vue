@@ -1,7 +1,8 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { campaigns } from '../data/content.js'
+import CampaignDetailModal from './CampaignDetailModal.vue'
 
 const props = defineProps({
   limit: { type: Number, default: 0 },
@@ -11,6 +12,26 @@ const props = defineProps({
 const displayed = computed(() =>
   props.limit > 0 ? campaigns.slice(0, props.limit) : campaigns
 )
+
+const selectedCampaign = ref(null)
+const modalOpen = ref(false)
+
+function openDetail(campaign) {
+  selectedCampaign.value = campaign
+  modalOpen.value = true
+}
+
+function closeDetail() {
+  modalOpen.value = false
+}
+
+watch(modalOpen, (isOpen) => {
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+})
+
+onUnmounted(() => {
+  document.body.style.overflow = ''
+})
 </script>
 
 <template>
@@ -19,28 +40,43 @@ const displayed = computed(() =>
       <article
         v-for="(campaign, index) in displayed"
         :key="`${campaign.year}-${campaign.region}`"
-        class="card-hover group relative overflow-hidden rounded-lg bg-deep-blue shadow-md"
+        class="card-hover group relative overflow-hidden rounded-lg bg-deep-blue shadow-md cursor-pointer"
         data-aos="fade-up"
         :data-aos-delay="index * 100"
+        role="button"
+        tabindex="0"
+        :aria-label="`Voir les détails — ${campaign.region}`"
+        @click="openDetail(campaign)"
+        @keydown.enter="openDetail(campaign)"
+        @keydown.space.prevent="openDetail(campaign)"
       >
         <div class="aspect-[4/3] overflow-hidden">
           <img
             :src="campaign.image"
             :alt="campaign.region"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-deep-blue via-deep-blue/60 to-transparent" />
-        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+        <div class="absolute inset-0 bg-gradient-to-t from-deep-blue via-deep-blue/60 to-transparent pointer-events-none" />
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white pointer-events-none">
           <p class="text-gold text-xs uppercase tracking-wider mb-1">
             {{ campaign.year }} · {{ campaign.country }}
           </p>
           <h3 class="font-display text-xl font-bold mb-2">{{ campaign.region }}</h3>
-          <p class="text-white/80 text-sm leading-relaxed">{{ campaign.description }}</p>
+          <p class="text-white/80 text-sm leading-relaxed line-clamp-3">{{ campaign.description }}</p>
+          <p class="mt-3 text-xs uppercase tracking-wider text-gold-light opacity-0 transition-opacity group-hover:opacity-100">
+            Voir les détails →
+          </p>
         </div>
       </article>
     </div>
+
+    <CampaignDetailModal
+      :campaign="selectedCampaign"
+      :open="modalOpen"
+      @close="closeDetail"
+    />
 
     <div v-if="showLink" class="text-center mt-10">
       <RouterLink

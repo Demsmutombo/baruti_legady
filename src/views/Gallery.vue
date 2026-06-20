@@ -2,14 +2,26 @@
 import { ref, computed, onMounted } from 'vue'
 import AOS from 'aos'
 import { galleryCategories, galleryItems } from '../data/content.js'
+import GalleryLightbox from '../components/GalleryLightbox.vue'
 
 const activeCategory = ref('all')
+const lightboxOpen = ref(false)
+const lightboxIndex = ref(0)
 
 const filtered = computed(() =>
   activeCategory.value === 'all'
     ? galleryItems
     : galleryItems.filter((item) => item.category === activeCategory.value)
 )
+
+function openLightbox(index) {
+  lightboxIndex.value = index
+  lightboxOpen.value = true
+}
+
+function closeLightbox() {
+  lightboxOpen.value = false
+}
 
 onMounted(() => AOS.refresh())
 </script>
@@ -52,26 +64,42 @@ onMounted(() => AOS.refresh())
           <figure
             v-for="(item, index) in filtered"
             :key="item.id"
-            class="card-hover group relative overflow-hidden rounded-lg aspect-square"
+            class="card-hover group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
             data-aos="zoom-in"
             :data-aos-delay="index * 60"
+            role="button"
+            tabindex="0"
+            :aria-label="`Ouvrir le diaporama — ${item.caption}`"
+            @click="openLightbox(index)"
+            @keydown.enter="openLightbox(index)"
+            @keydown.space.prevent="openLightbox(index)"
           >
             <img
               :src="item.image"
               :alt="item.caption"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
             <figcaption
-              class="absolute inset-0 bg-deep-blue/0 group-hover:bg-deep-blue/70 flex items-end transition-colors duration-300"
+              class="absolute inset-0 flex items-end bg-deep-blue/0 transition-colors duration-300 group-hover:bg-deep-blue/70 pointer-events-none"
             >
-              <p class="text-white p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-sm font-medium">
+              <p class="translate-y-full p-4 text-sm font-medium text-white transition-transform duration-300 group-hover:translate-y-0">
                 {{ item.caption }}
               </p>
+              <span class="absolute top-3 right-3 rounded-full bg-deep-blue/70 px-2 py-1 text-[10px] uppercase tracking-wider text-gold opacity-0 transition-opacity group-hover:opacity-100">
+                Diaporama
+              </span>
             </figcaption>
           </figure>
         </div>
       </div>
     </section>
+
+    <GalleryLightbox
+      :items="filtered"
+      :start-index="lightboxIndex"
+      :open="lightboxOpen"
+      @close="closeLightbox"
+    />
   </div>
 </template>
