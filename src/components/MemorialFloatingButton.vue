@@ -7,15 +7,22 @@ import { useMemorialElapsed } from '../composables/useMemorialElapsed.js'
 const route = useRoute()
 const open = ref(false)
 const heroInView = ref(false)
+const footerInView = ref(false)
 const { daysSinceDeparture } = useMemorialElapsed()
 
 let heroObserver = null
+let footerObserver = null
 
-const isVisible = computed(() => route.path !== '/' || !heroInView.value)
+const isVisible = computed(() => (route.path !== '/' || !heroInView.value) && !footerInView.value)
 
 function disconnectHeroObserver() {
   heroObserver?.disconnect()
   heroObserver = null
+}
+
+function disconnectFooterObserver() {
+  footerObserver?.disconnect()
+  footerObserver = null
 }
 
 function bindHeroObserver() {
@@ -42,6 +49,24 @@ function bindHeroObserver() {
   })
 }
 
+function bindFooterObserver() {
+  disconnectFooterObserver()
+  footerInView.value = false
+
+  nextTick(() => {
+    const footer = document.getElementById('site-footer')
+    if (!footer) return
+
+    footerObserver = new IntersectionObserver(
+      ([entry]) => {
+        footerInView.value = entry.isIntersecting
+      },
+      { threshold: 0.05 }
+    )
+    footerObserver.observe(footer)
+  })
+}
+
 function toggle() {
   open.value = !open.value
 }
@@ -58,16 +83,21 @@ watch(open, (isOpen) => {
   document.body.style.overflow = isOpen ? 'hidden' : ''
 })
 
-watch(() => route.path, bindHeroObserver)
+watch(() => route.path, () => {
+  bindHeroObserver()
+  bindFooterObserver()
+})
 
 onMounted(() => {
   window.addEventListener('keydown', onKeydown)
   bindHeroObserver()
+  bindFooterObserver()
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', onKeydown)
   disconnectHeroObserver()
+  disconnectFooterObserver()
   document.body.style.overflow = ''
 })
 </script>
