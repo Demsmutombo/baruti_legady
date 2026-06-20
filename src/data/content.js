@@ -143,16 +143,7 @@ export const galleryCategories = [
   { id: "international", label: "Ministère international" },
 ]
 
-export const galleryItems = [
-  { id: 1, category: "campaigns", caption: "Campagne Docteur Jésus — Kinshasa 2016", image: "https://images.unsplash.com/photo-1507692049790-de582cc9ef34?w=400&q=80" },
-  { id: 2, category: "church", caption: "Baruti Tabernacle — Righini", image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&q=80" },
-  { id: 3, category: "historical", caption: "Ministère depuis 1973", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80" },
-  { id: 4, category: "international", caption: "Campagne Brésil 2015", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&q=80" },
-  { id: 5, category: "campaigns", caption: "Évangélisation Mbandaka 2017", image: "https://images.unsplash.com/photo-1489392191049-fc10c797e1a6?w=400&q=80" },
-  { id: 6, category: "international", caption: "Campagne Australie 2015", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&q=80" },
-  { id: 7, category: "campaigns", caption: "Kahemba 2022", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" },
-  { id: 8, category: "historical", caption: "Pasteur élu — Righini 1990", image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80" },
-]
+export { galleryItems } from './images.js'
 
 export const contact = {
   church: "Baruti Tabernacle",

@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import AOS from 'aos'
 import { ministrySections, pastor, biographyEssentials } from '../data/content.js'
+import { heroImage, pastorPreaching } from '../data/images.js'
 
 onMounted(() => AOS.refresh())
 </script>
@@ -25,7 +26,20 @@ onMounted(() => AOS.refresh())
       </div>
     </section>
 
-    <section class="py-20">
+    <section class="relative py-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 -mt-8 mb-16" data-aos="fade-up">
+          <div class="rounded-lg overflow-hidden shadow-md aspect-[16/10]">
+            <img :src="heroImage" alt="Baruti Tabernacle" class="w-full h-full object-cover" />
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-md aspect-[16/10]">
+            <img :src="pastorPreaching" alt="Pasteur Baruti en prédication" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <article
           v-for="(section, index) in ministrySections"

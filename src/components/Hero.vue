@@ -1,17 +1,42 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
 import { pastor } from '../data/content.js'
+import { heroCarouselImages } from '../data/images.js'
+import 'swiper/css/effect-fade'
+import 'swiper/css/pagination'
+
+const modules = [Autoplay, EffectFade, Pagination]
 </script>
 
 <template>
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-      style="background-image: url('https://images.unsplash.com/photo-1507692049790-de582cc9ef34?w=1920&q=80')"
-    />
-    <div class="absolute inset-0 hero-overlay" />
+  <section class="hero-section relative isolate flex min-h-screen h-[100svh] items-center justify-center overflow-hidden">
+    <!-- Carousel plein écran en arrière-plan -->
+    <div class="hero-bg absolute inset-0 z-0">
+      <Swiper
+        :modules="modules"
+        effect="fade"
+        :fade-effect="{ crossFade: true }"
+        :autoplay="{ delay: 5000, disableOnInteraction: false }"
+        :pagination="{ clickable: true }"
+        :loop="true"
+        :speed="1400"
+        class="hero-carousel h-full w-full"
+      >
+        <SwiperSlide v-for="(image, index) in heroCarouselImages" :key="index">
+          <img
+            :src="image"
+            alt=""
+            class="hero-bg-image"
+            loading="eager"
+            :fetchpriority="index === 0 ? 'high' : 'auto'"
+          />
+        </SwiperSlide>
+      </Swiper>
+    </div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white pt-24 pb-16">
+      <div class="relative z-10 mx-auto max-w-5xl px-4 pt-24 pb-20 text-center text-white sm:px-6">
       <p
         class="font-heading text-gold tracking-[0.3em] uppercase text-sm mb-6"
         data-aos="fade-down"
@@ -77,10 +102,59 @@ import { pastor } from '../data/content.js'
       </div>
     </div>
 
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
+    <div class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-white/50">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-section {
+  width: 100%;
+  background-color: #0f2847;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-carousel :deep(.swiper),
+.hero-carousel :deep(.swiper-wrapper),
+.hero-carousel :deep(.swiper-slide) {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-carousel :deep(.swiper-slide) {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0.15;
+}
+
+.hero-carousel :deep(.swiper-pagination) {
+  bottom: 1.5rem;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.hero-carousel :deep(.swiper-pagination-bullet) {
+  background: rgba(255, 255, 255, 0.45);
+  opacity: 1;
+}
+
+.hero-carousel :deep(.swiper-pagination-bullet-active) {
+  background: #c9a227;
+}
+</style>

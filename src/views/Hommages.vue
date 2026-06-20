@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import AOS from 'aos'
 import { hommages, pastor, galleryItems } from '../data/content.js'
+import { pastorCouple } from '../data/images.js'
 
 onMounted(() => AOS.refresh())
 </script>
@@ -19,6 +20,16 @@ onMounted(() => AOS.refresh())
         <p class="text-white/80 text-lg italic font-display" data-aos="fade-up" data-aos-delay="200">
           « {{ pastor.quote }} »
         </p>
+      </div>
+    </section>
+
+    <section class="py-12 bg-soft-gray border-b border-gray-100">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6" data-aos="fade-up">
+        <img
+          :src="pastorCouple"
+          alt="Pasteur Baruti Kasongo et famille"
+          class="w-full max-h-96 object-cover rounded-lg shadow-md mx-auto"
+        />
       </div>
     </section>
 
@@ -59,7 +70,7 @@ onMounted(() => AOS.refresh())
         </h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div
-            v-for="(item, i) in galleryItems.slice(0, 4)"
+            v-for="(item, i) in galleryItems.slice(0, 8)"
             :key="item.id"
             class="aspect-square rounded-lg overflow-hidden"
             data-aos="zoom-in"
