@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 import AOS from 'aos'
 import { hommages, pastor, galleryItems } from '../data/content.js'
-import { pastorCouple } from '../data/images.js'
+import { bk } from '../data/images.js'
 
 onMounted(() => AOS.refresh())
 </script>
@@ -26,9 +26,9 @@ onMounted(() => AOS.refresh())
     <section class="py-12 bg-soft-gray border-b border-gray-100">
       <div class="max-w-4xl mx-auto px-4 sm:px-6" data-aos="fade-up">
         <img
-          :src="pastorCouple"
-          alt="Pasteur Baruti Kasongo et famille"
-          class="w-full max-h-96 object-cover rounded-lg shadow-md mx-auto"
+          :src="bk(34)"
+          alt="Pasteur Baruti Kasongo — Hommage"
+          class="w-full h-auto rounded-lg shadow-md mx-auto block"
         />
       </div>
     </section>
