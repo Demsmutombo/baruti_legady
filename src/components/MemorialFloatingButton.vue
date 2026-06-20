@@ -74,33 +74,20 @@ onUnmounted(() => {
 
 <template>
   <Transition name="memorial-float-fade">
-    <div v-show="isVisible" class="memorial-float fixed z-[90] bottom-6 right-4 sm:bottom-8 sm:right-6">
-    <button
-      type="button"
-      class="memorial-float-btn group flex items-center gap-2 rounded-full border border-gold/50 bg-deep-blue px-4 py-3 shadow-lg transition-all duration-300 hover:border-gold hover:bg-deep-blue-light hover:shadow-xl hover:scale-105 sm:px-5 sm:py-3.5"
-      :aria-expanded="open"
-      aria-label="Voir le compteur de jours depuis le départ du Pasteur Baruti"
-      @click="toggle"
-    >
-      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold transition-colors group-hover:bg-gold/25">
-        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <div v-show="isVisible" class="memorial-float fixed z-[90] bottom-5 right-4 sm:bottom-6 sm:right-5">
+      <button
+        type="button"
+        class="memorial-float-btn group"
+        :aria-expanded="open"
+        aria-label="Voir le compteur de jours depuis le départ du Pasteur Baruti"
+        @click="toggle"
+      >
+        <svg class="memorial-float-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-      </span>
-      <span class="text-left leading-tight">
-        <span class="block font-display text-xl font-bold tabular-nums text-gold sm:text-2xl">
-          {{ daysSinceDeparture.toLocaleString('fr-FR') }}
-        </span>
-        <span class="block font-heading text-[10px] uppercase tracking-widest text-white/80 group-hover:text-gold-light">
-          {{ daysSinceDeparture === 1 ? 'jour' : 'jours' }}
-        </span>
-      </span>
-      <span
-        class="pointer-events-none absolute -top-10 right-0 whitespace-nowrap rounded-md bg-deep-blue px-3 py-1.5 text-xs text-white shadow-md opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      >
-        Depuis son départ
-      </span>
-    </button>
+        <span class="memorial-float-count">{{ daysSinceDeparture.toLocaleString('fr-FR') }}</span>
+        <span class="memorial-float-label">{{ daysSinceDeparture === 1 ? 'jour' : 'jours' }}</span>
+      </button>
 
     <Teleport to="body">
       <Transition name="memorial-modal">
@@ -137,6 +124,85 @@ onUnmounted(() => {
 <style scoped>
 .memorial-float-btn {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem 0.45rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(201 162 39 / 0.45);
+  background: rgb(15 40 71 / 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 4px 14px rgb(15 40 71 / 0.25),
+    0 0 0 1px rgb(255 255 255 / 0.04) inset;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.memorial-float-btn:hover {
+  border-color: rgb(201 162 39 / 0.85);
+  background: rgb(26 58 92 / 0.96);
+  box-shadow:
+    0 6px 18px rgb(15 40 71 / 0.3),
+    0 0 0 1px rgb(201 162 39 / 0.15) inset;
+}
+
+.memorial-float-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  color: #c9a227;
+}
+
+.memorial-float-count {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: #e8d48b;
+}
+
+.memorial-float-label {
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.55);
+  transition: color 0.2s ease;
+}
+
+.memorial-float-btn:hover .memorial-float-label {
+  color: rgb(232 212 139 / 0.85);
+}
+
+:global(.dark) .memorial-float-btn {
+  background: rgb(15 40 71 / 0.94);
+}
+
+:global(html:not(.dark)) .memorial-float-btn {
+  border-color: rgb(201 162 39 / 0.55);
+  background: rgb(255 255 255 / 0.95);
+  box-shadow:
+    0 4px 16px rgb(15 40 71 / 0.12),
+    0 0 0 1px rgb(15 40 71 / 0.06);
+}
+
+:global(html:not(.dark)) .memorial-float-count {
+  color: #0f2847;
+}
+
+:global(html:not(.dark)) .memorial-float-label {
+  color: rgb(15 40 71 / 0.5);
+}
+
+:global(html:not(.dark)) .memorial-float-btn:hover {
+  background: #fff;
+  border-color: #c9a227;
+}
+
+:global(html:not(.dark)) .memorial-float-btn:hover .memorial-float-label {
+  color: rgb(15 40 71 / 0.7);
 }
 
 .memorial-float-fade-enter-active,

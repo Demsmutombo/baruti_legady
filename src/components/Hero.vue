@@ -36,76 +36,50 @@ const modules = [Autoplay, EffectFade, Pagination]
       </Swiper>
     </div>
 
-      <div class="relative z-10 mx-auto max-w-5xl px-4 pt-24 pb-20 text-center text-white sm:px-6">
+      <div class="relative z-10 mx-auto max-w-4xl px-4 pt-24 pb-24 text-center text-white sm:px-6">
       <p
-        class="font-heading text-gold tracking-[0.3em] uppercase text-sm mb-6"
+        class="mb-5 font-heading text-xs uppercase tracking-[0.35em] text-gold sm:text-sm"
         data-aos="fade-down"
       >
         Baruti Legacy Foundation
       </p>
 
       <h1
-        class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4"
+        class="font-display text-4xl font-bold leading-tight sm:text-5xl md:text-6xl"
         data-aos="fade-up"
         data-aos-delay="100"
       >
-        {{ pastor.fullName }}
+        {{ pastor.shortName }}
       </h1>
 
       <p
-        class="text-gold-light text-lg sm:text-xl font-heading tracking-wide mb-2"
+        class="mx-auto mt-5 max-w-xl text-base text-white/75 sm:text-lg"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        {{ pastor.birthYear }} — {{ pastor.homeYear }}
+        <span class="mx-2 text-gold/60">·</span>
+        Fondateur de Baruti Tabernacle
+      </p>
+
+      <div
+        class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        {{ pastor.title }}
-      </p>
-
-      <p
-        class="text-white/70 font-display text-base sm:text-lg mb-8"
-        data-aos="fade-up"
-        data-aos-delay="250"
-      >
-        {{ pastor.birthYear }} — {{ pastor.homeYear }} · {{ pastor.nickname }}
-      </p>
-
-      <blockquote
-        class="max-w-2xl mx-auto text-white/90 text-lg italic font-display mb-12 leading-relaxed"
-        data-aos="fade-up"
-        data-aos-delay="300"
-      >
-        « {{ pastor.quote }} »
-      </blockquote>
-
-      <div
-        class="flex flex-col sm:flex-row items-center justify-center gap-4"
-        data-aos="fade-up"
-        data-aos-delay="400"
-      >
         <RouterLink
           to="/biographie"
-          class="w-full sm:w-auto px-8 py-3.5 bg-gold text-deep-blue font-semibold rounded-sm hover:bg-gold-light transition-colors"
+          class="w-full rounded-sm bg-gold px-8 py-3.5 font-semibold text-deep-blue transition-colors hover:bg-gold-light sm:w-auto"
         >
-          Voir la biographie
+          Découvrir son parcours
         </RouterLink>
         <RouterLink
           to="/ministere"
-          class="w-full sm:w-auto px-8 py-3.5 border border-white/40 text-white rounded-sm hover:bg-white/10 transition-colors"
+          class="w-full rounded-sm border border-white/40 px-8 py-3.5 text-white transition-colors hover:bg-white/10 sm:w-auto"
         >
-          Explorer le ministère
-        </RouterLink>
-        <RouterLink
-          to="/temoignages"
-          class="w-full sm:w-auto px-8 py-3.5 border border-gold/60 text-gold rounded-sm hover:bg-gold/10 transition-colors"
-        >
-          Témoignages
+          Son ministère
         </RouterLink>
       </div>
-    </div>
-
-    <div class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-white/50">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
     </div>
   </section>
 </template>
@@ -140,7 +114,7 @@ const modules = [Autoplay, EffectFade, Pagination]
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  opacity: 0.15;
+  opacity: 0.28;
 }
 
 .hero-carousel :deep(.swiper-pagination) {
