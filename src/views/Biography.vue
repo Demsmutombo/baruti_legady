@@ -357,4 +357,23 @@ onUnmounted(() => {
   font-size: 0.8125rem;
   color: #6b7280;
 }
+
+:global(.dark) .bio-essential-body,
+:global(.dark) .bio-identity {
+  border-color: rgb(255 255 255 / 0.1);
+}
+
+@media (min-width: 768px) {
+  :global(.dark) .bio-identity {
+    border-right-color: rgb(255 255 255 / 0.1);
+  }
+}
+
+:global(.dark) .bio-detail-value {
+  color: #e2e8f0;
+}
+
+:global(.dark) .bio-detail-sub {
+  color: #94a3b8;
+}
 </style>

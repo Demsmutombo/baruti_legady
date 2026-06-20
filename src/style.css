@@ -4,6 +4,8 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-gold: #c9a227;
   --color-gold-light: #e8d48b;
@@ -11,6 +13,8 @@
   --color-deep-blue-light: #1a3a5c;
   --color-soft-gray: #f5f5f0;
   --color-muted: #6b7280;
+  --color-page: #ffffff;
+  --color-card: #ffffff;
   --font-display: "Playfair Display", "Cinzel", serif;
   --font-heading: "Cinzel", "Playfair Display", serif;
   --font-body: "Inter", "Open Sans", sans-serif;
@@ -23,8 +27,63 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--color-deep-blue);
-  background-color: #ffffff;
+  background-color: var(--color-page);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.dark {
+  --color-soft-gray: #111f33;
+  --color-muted: #94a3b8;
+  --color-page: #0a1628;
+  --color-card: #132a47;
+  color-scheme: dark;
+}
+
+.dark body {
+  color: #e2e8f0;
+}
+
+.dark .bg-white {
+  background-color: var(--color-card);
+}
+
+.dark .bg-soft-gray {
+  background-color: var(--color-soft-gray);
+}
+
+.dark .text-deep-blue {
+  color: #e2e8f0;
+}
+
+.dark [class*="text-deep-blue/"] {
+  color: rgb(226 232 240 / 0.82);
+}
+
+.dark .text-muted {
+  color: var(--color-muted);
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200 {
+  border-color: rgb(255 255 255 / 0.12);
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #0f2340;
+  border-color: rgb(255 255 255 / 0.15);
+  color: #e2e8f0;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgb(148 163 184 / 0.75);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.35);
 }
 
 .font-display {

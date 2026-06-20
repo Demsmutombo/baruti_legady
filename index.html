@@ -15,6 +15,17 @@
       rel="stylesheet"
     />
     <title>Baruti Legacy Foundation</title>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('baruti-theme')
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (theme === 'dark' || (!theme && prefersDark)) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
     <div id="app"></div>
