@@ -55,6 +55,17 @@ import { contact } from '../data/content.js'
       <div class="border-t border-white/10 mt-12 pt-8 text-center text-white/50 text-sm">
         <p>&copy; {{ new Date().getFullYear() }} Baruti Legacy Foundation. Tous droits réservés.</p>
         <p class="mt-1 text-xs">À la gloire de Dieu — En mémoire d'un serviteur fidèle</p>
+        <p class="mt-4 text-xs text-white/40">
+          Plateforme mémorielle réalisée par
+          <a
+            href="https://www.onememoria.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ml-1 text-gold/80 transition-colors hover:text-gold"
+          >
+            One Memoria
+          </a>
+        </p>
       </div>
     </div>
   </footer>
