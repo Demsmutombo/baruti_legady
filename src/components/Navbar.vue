@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import logoSrc from '../assets/anime.png'
 
@@ -19,6 +19,28 @@ const links = [
   { to: '/contact', label: 'Contact' },
 ]
 
+const useSolidNav = computed(() => isScrolled.value || route.path !== '/')
+
+function navLinkClass(isActive) {
+  if (useSolidNav.value) {
+    return isActive
+      ? 'bg-gold text-deep-blue font-semibold shadow-sm'
+      : 'text-white hover:bg-white/10 hover:text-gold-light'
+  }
+
+  return isActive
+    ? 'bg-white/15 text-gold font-semibold'
+    : 'text-white hover:bg-white/10 hover:text-gold-light'
+}
+
+function mobileLinkClass(isActive) {
+  if (isActive) {
+    return 'text-deep-blue bg-gold font-semibold'
+  }
+
+  return 'text-white hover:bg-white/10 hover:text-gold-light'
+}
+
 function onScroll() {
   isScrolled.value = window.scrollY > 40
 }
@@ -27,7 +49,10 @@ function closeMenu() {
   isOpen.value = false
 }
 
-onMounted(() => window.addEventListener('scroll', onScroll))
+onMounted(() => {
+  onScroll()
+  window.addEventListener('scroll', onScroll)
+})
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
@@ -35,7 +60,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   <header
     :class="[
       'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      isScrolled ? 'bg-deep-blue/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5',
+      useSolidNav
+        ? 'bg-deep-blue/98 backdrop-blur-md shadow-lg border-b border-white/10 py-3'
+        : 'bg-transparent py-5',
     ]"
   >
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -43,22 +70,20 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
         <img
           :src="logoSrc"
           alt="Baruti Legacy Foundation"
-          class="h-9 w-9 sm:h-10 sm:w-10 rounded-sm object-cover object-top shrink-0"
+          class="h-14 w-14 shrink-0 rounded-full object-cover object-top sm:h-16 sm:w-16"
         />
         <span class="font-display text-white text-base sm:text-lg font-semibold group-hover:text-gold-light transition-colors leading-tight">
           Baruti Legacy
         </span>
       </RouterLink>
 
-      <ul class="hidden xl:flex items-center gap-1">
+      <ul class="hidden xl:flex items-center gap-0.5">
         <li v-for="link in links" :key="link.to">
           <RouterLink
             :to="link.to"
             :class="[
-              'px-3 py-2 text-sm rounded-md transition-colors',
-              route.path === link.to
-                ? 'text-gold font-medium'
-                : 'text-white/80 hover:text-gold-light',
+              'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+              navLinkClass(route.path === link.to),
             ]"
           >
             {{ link.label }}
@@ -89,8 +114,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
           <RouterLink
             :to="link.to"
             :class="[
-              'block px-4 py-3 rounded-lg text-sm transition-colors',
-              route.path === link.to ? 'text-gold bg-white/5' : 'text-white/80 hover:bg-white/5',
+              'block rounded-lg px-4 py-3 text-sm font-medium transition-colors',
+              mobileLinkClass(route.path === link.to),
             ]"
             @click="closeMenu"
           >

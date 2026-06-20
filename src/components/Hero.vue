@@ -11,7 +11,7 @@ const modules = [Autoplay, EffectFade, Pagination]
 </script>
 
 <template>
-  <section class="hero-section relative isolate flex min-h-screen h-[100svh] items-center justify-center overflow-hidden">
+  <section id="site-hero" class="hero-section relative isolate flex min-h-screen h-[100svh] items-center justify-center overflow-hidden">
     <!-- Carousel plein écran en arrière-plan -->
     <div class="hero-bg absolute inset-0 z-0">
       <Swiper

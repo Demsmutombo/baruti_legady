@@ -5,6 +5,7 @@ import AOS from 'aos'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import SplashScreen from './components/SplashScreen.vue'
+import MemorialFloatingButton from './components/MemorialFloatingButton.vue'
 
 const route = useRoute()
 
@@ -43,5 +44,6 @@ watch(
       <RouterView />
     </main>
     <Footer />
+    <MemorialFloatingButton />
   </div>
 </template>

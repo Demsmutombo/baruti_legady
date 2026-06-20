@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import AOS from 'aos'
 import BiographyTimeline from '../components/BiographyTimeline.vue'
 import BiographyChapters from '../components/BiographyChapters.vue'
@@ -8,9 +8,39 @@ import {
   biographyEssentials,
   nameMeanings,
 } from '../data/content.js'
-import { pastorPortrait, heroImage } from '../data/images.js'
+import { pastorPortrait, biographyBannerImage } from '../data/images.js'
 
-onMounted(() => AOS.refresh())
+const bannerImgRef = ref(null)
+const bannerCoverStyle = ref({})
+
+// Zone « HORAIRE DES CULTES » mesurée sur bk (3).jpeg (1280×720)
+const HORAIRE_COVER = {
+  left: 0.362,
+  top: 0.864,
+  width: 0.256,
+  height: 0.118,
+  color: '#6d6869',
+}
+
+function updateBannerCover() {
+  bannerCoverStyle.value = {
+    left: `${HORAIRE_COVER.left * 100}%`,
+    top: `${HORAIRE_COVER.top * 100}%`,
+    width: `${HORAIRE_COVER.width * 100}%`,
+    height: `${HORAIRE_COVER.height * 100}%`,
+    backgroundColor: HORAIRE_COVER.color,
+  }
+}
+
+onMounted(() => {
+  AOS.refresh()
+  updateBannerCover()
+  window.addEventListener('resize', updateBannerCover)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateBannerCover)
+})
 </script>
 
 <template>
@@ -48,9 +78,16 @@ onMounted(() => AOS.refresh())
         >
           <div class="bio-banner">
             <img
-              :src="heroImage"
+              ref="bannerImgRef"
+              :src="biographyBannerImage"
               alt="Baruti Tabernacle — Pasteur Baruti Kasongo"
               class="bio-banner-img"
+              @load="updateBannerCover"
+            />
+            <span
+              class="bio-banner-cover"
+              aria-hidden="true"
+              :style="bannerCoverStyle"
             />
           </div>
           <div class="bio-essential-body grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr]">
@@ -202,6 +239,12 @@ onMounted(() => AOS.refresh())
   height: 100%;
   object-fit: cover;
   object-position: top center;
+}
+
+.bio-banner-cover {
+  position: absolute;
+  z-index: 2;
+  border-radius: 1px;
 }
 
 .bio-essential-body {

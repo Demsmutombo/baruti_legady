@@ -17,6 +17,7 @@ export const bk = (n) => bkImages[n - 1] ?? bkImages[0]
 
 /** Images clés */
 export const heroImage = bk(42)
+export const biographyBannerImage = bk(3)
 export const heroCarouselImages = [bk(42), bk(16), bk(27), bk(10), bk(11)]
 export const pastorPortrait = bk(6)
 export const pastorPreaching = bk(8)
