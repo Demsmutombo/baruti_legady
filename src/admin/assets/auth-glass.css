@@ -3,36 +3,36 @@
 /* ── Mode clair (défaut) ── */
 .auth-public-theme {
   --auth-text: #0f2847;
-  --auth-muted: rgb(15 40 71 / 0.62);
-  --auth-card: rgb(255 255 255 / 0.14);
-  --auth-border: rgb(255 255 255 / 0.38);
-  --auth-input-bg: rgb(255 255 255 / 0.22);
+  --auth-muted: rgb(15 40 71 / 0.72);
+  --auth-card: rgb(255 255 255 / 0.62);
+  --auth-border: rgb(255 255 255 / 0.72);
+  --auth-input-bg: rgb(255 255 255 / 0.78);
   --auth-input-text: #0f2847;
-  --auth-placeholder: rgb(15 40 71 / 0.42);
-  --auth-card-shadow: 0 20px 44px rgb(15 40 71 / 0.14);
+  --auth-placeholder: rgb(15 40 71 / 0.48);
+  --auth-card-shadow: 0 20px 44px rgb(15 40 71 / 0.18);
   --auth-link: #96761a;
   --auth-link-hover: #c9a227;
-  --auth-icon: rgb(15 40 71 / 0.45);
-  --auth-check-text: rgb(15 40 71 / 0.82);
-  --auth-footer-text: rgb(15 40 71 / 0.72);
+  --auth-icon: rgb(15 40 71 / 0.5);
+  --auth-check-text: rgb(15 40 71 / 0.88);
+  --auth-footer-text: rgb(15 40 71 / 0.78);
   --auth-back: rgb(255 255 255 / 0.92);
 }
 
 /* ── Mode sombre ── */
 .auth-public-theme.is-dark {
   --auth-text: #ffffff;
-  --auth-muted: rgb(255 255 255 / 0.72);
-  --auth-card: rgb(255 255 255 / 0.03);
-  --auth-border: rgb(255 255 255 / 0.14);
-  --auth-input-bg: rgb(15 40 71 / 0.14);
+  --auth-muted: rgb(255 255 255 / 0.78);
+  --auth-card: rgb(15 40 71 / 0.78);
+  --auth-border: rgb(255 255 255 / 0.22);
+  --auth-input-bg: rgb(10 22 40 / 0.72);
   --auth-input-text: #ffffff;
-  --auth-placeholder: rgb(255 255 255 / 0.45);
-  --auth-card-shadow: 0 16px 40px rgb(0 0 0 / 0.2);
+  --auth-placeholder: rgb(255 255 255 / 0.5);
+  --auth-card-shadow: 0 16px 40px rgb(0 0 0 / 0.35);
   --auth-link: rgb(255 255 255 / 0.9);
   --auth-link-hover: #e8d48b;
-  --auth-icon: rgb(255 255 255 / 0.6);
-  --auth-check-text: rgb(255 255 255 / 0.88);
-  --auth-footer-text: rgb(255 255 255 / 0.82);
+  --auth-icon: rgb(255 255 255 / 0.65);
+  --auth-check-text: rgb(255 255 255 / 0.9);
+  --auth-footer-text: rgb(255 255 255 / 0.85);
   --auth-back: rgb(255 255 255 / 0.88);
 }
 
@@ -260,8 +260,8 @@
   border-radius: 1.25rem;
   border: 1px solid var(--auth-border);
   background: var(--auth-card);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--auth-card-shadow);
 }
 
@@ -393,14 +393,14 @@
 
 .admin-app .auth-public-theme .auth-glass-input:focus {
   border-color: rgb(201 162 39 / 0.65);
-  background-color: rgb(255 255 255 / 0.32);
+  background-color: rgb(255 255 255 / 0.92);
   box-shadow: 0 0 0 2px rgb(201 162 39 / 0.15);
 }
 
 .auth-public-theme.is-dark .auth-glass-input:focus {
-  border-color: rgb(201 162 39 / 0.45);
-  background-color: rgb(15 40 71 / 0.22);
-  box-shadow: 0 0 0 2px rgb(201 162 39 / 0.1);
+  border-color: rgb(201 162 39 / 0.55);
+  background-color: rgb(10 22 40 / 0.88);
+  box-shadow: 0 0 0 2px rgb(201 162 39 / 0.12);
 }
 
 .auth-glass-field-icon {
