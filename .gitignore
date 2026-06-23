@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+# Copie locale du template TailAdmin à la racine (non utilisée par l'app)
 /admin
 *.local
 
