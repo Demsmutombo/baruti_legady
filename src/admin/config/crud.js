@@ -1,0 +1,213 @@
+export const testimonyCategoryOptions = [
+  { value: 'guérison', label: 'Guérison' },
+  { value: 'miracle', label: 'Miracle' },
+  { value: 'foi', label: 'Foi' },
+  { value: 'ministère', label: 'Ministère' },
+  { value: 'surnaturel', label: 'Surnaturel' },
+]
+
+export const galleryCategoryOptions = [
+  { value: 'campaigns', label: 'Campagnes' },
+  { value: 'church', label: 'Église' },
+  { value: 'historical', label: 'Moments historiques' },
+  { value: 'international', label: 'Ministère international' },
+]
+
+export const crudResources = {
+  highlights: {
+    title: 'Piliers du ministère',
+    subtitle: 'Blocs mis en avant sur la page d\'accueil',
+    publicPath: '/',
+    collection: 'highlights',
+    label: 'Pilier',
+    labelPlural: 'Piliers',
+    labelPlural: 'Piliers',
+    columns: [
+      { key: 'icon', label: 'Icône', width: 'w-16' },
+      { key: 'title', label: 'Titre' },
+      { key: 'description', label: 'Description', truncate: 80 },
+    ],
+    fields: [
+      { key: 'icon', label: 'Icône (emoji)', type: 'text', required: true, placeholder: '✝' },
+      { key: 'title', label: 'Titre', type: 'text', required: true },
+      { key: 'description', label: 'Description', type: 'textarea', required: true, rows: 4 },
+    ],
+  },
+  campaigns: {
+    title: 'Campagnes',
+    subtitle: 'Missions d\'évangélisation documentées sur le site',
+    publicPath: '/campagnes',
+    collection: 'campaigns',
+    label: 'Campagne',
+    labelPlural: 'Campagnes',
+    columns: [
+      { key: 'imageIndex', label: 'Photo', type: 'image' },
+      { key: 'year', label: 'Année', width: 'w-20' },
+      { key: 'region', label: 'Région' },
+      { key: 'country', label: 'Pays / zone' },
+    ],
+    fields: [
+      { key: 'year', label: 'Année', type: 'text', required: true },
+      { key: 'region', label: 'Région', type: 'text', required: true },
+      { key: 'country', label: 'Pays / province', type: 'text', required: true },
+      { key: 'description', label: 'Description', type: 'textarea', required: true, rows: 5 },
+      { key: 'imageIndex', label: 'Photo (bk)', type: 'imageIndex', required: true },
+    ],
+  },
+  testimonies: {
+    title: 'Témoignages',
+    subtitle: 'Miracles et faits du ministère',
+    publicPath: '/temoignages',
+    collection: 'testimonies',
+    label: 'Témoignage',
+    labelPlural: 'Témoignages',
+    columns: [
+      { key: 'title', label: 'Titre' },
+      { key: 'category', label: 'Catégorie', format: 'category' },
+      { key: 'text', label: 'Texte', truncate: 100 },
+    ],
+    fields: [
+      { key: 'author', label: 'Auteur', type: 'text' },
+      { key: 'title', label: 'Titre', type: 'text', required: true },
+      { key: 'category', label: 'Catégorie', type: 'select', options: testimonyCategoryOptions, required: true },
+      { key: 'text', label: 'Témoignage', type: 'textarea', required: true, rows: 6 },
+      { key: 'mediaUrl', label: 'Média (URL)', type: 'textarea', rows: 2 },
+    ],
+  },
+  teachings: {
+    title: 'Enseignements',
+    subtitle: 'Messages et prédications du Pasteur Baruti',
+    publicPath: '/enseignements',
+    collection: 'teachings',
+    label: 'Enseignement',
+    labelPlural: 'Enseignements',
+    columns: [
+      { key: 'title', label: 'Titre' },
+      { key: 'year', label: 'Année', width: 'w-20' },
+      { key: 'date', label: 'Date / lieu' },
+    ],
+    fields: [
+      { key: 'title', label: 'Titre', type: 'text', required: true },
+      { key: 'year', label: 'Année', type: 'text' },
+      { key: 'date', label: 'Date ou lieu', type: 'text' },
+      { key: 'excerpt', label: 'Résumé', type: 'textarea', required: true, rows: 4 },
+      { key: 'quote', label: 'Citation biblique', type: 'textarea', rows: 2 },
+    ],
+  },
+  hommages: {
+    title: 'Hommages',
+    subtitle: 'Tributs et messages de condoléances',
+    publicPath: '/hommages',
+    collection: 'hommages',
+    label: 'Hommage',
+    labelPlural: 'Hommages',
+    columns: [
+      { key: 'author', label: 'Auteur' },
+      { key: 'role', label: 'Rôle' },
+      { key: 'message', label: 'Message', truncate: 90 },
+    ],
+    fields: [
+      { key: 'author', label: 'Auteur', type: 'text', required: true },
+      { key: 'role', label: 'Rôle / affiliation', type: 'text', required: true },
+      { key: 'message', label: 'Message', type: 'textarea', required: true, rows: 5 },
+      { key: 'mediaUrl', label: 'Média (URL)', type: 'textarea', rows: 2 },
+    ],
+  },
+  galleryItems: {
+    title: 'Galerie',
+    subtitle: 'Photos du mémorial et du ministère',
+    publicPath: '/galerie',
+    collection: 'galleryItems',
+    label: 'Photo',
+    labelPlural: 'Photos',
+    columns: [
+      { key: 'imageIndex', label: 'Aperçu', type: 'image' },
+      { key: 'caption', label: 'Légende' },
+      { key: 'category', label: 'Catégorie', format: 'galleryCategory' },
+    ],
+    fields: [
+      { key: 'caption', label: 'Légende', type: 'text', required: true },
+      { key: 'category', label: 'Catégorie', type: 'select', options: galleryCategoryOptions, required: true },
+      { key: 'imageIndex', label: 'Photo (bk)', type: 'imageIndex', required: true },
+    ],
+  },
+  ministrySections: {
+    title: 'Ministère',
+    subtitle: 'Sections de la page Ministère',
+    publicPath: '/ministere',
+    collection: 'ministrySections',
+    label: 'Section',
+    labelPlural: 'Sections',
+    columns: [
+      { key: 'title', label: 'Titre' },
+      { key: 'content', label: 'Contenu', truncate: 100 },
+    ],
+    fields: [
+      { key: 'title', label: 'Titre', type: 'text', required: true },
+      { key: 'content', label: 'Contenu', type: 'textarea', required: true, rows: 6 },
+    ],
+  },
+  biographyEvents: {
+    title: 'Frise chronologique',
+    subtitle: 'Événements de la biographie',
+    publicPath: '/biographie',
+    collection: 'biographyEvents',
+    label: 'Événement',
+    labelPlural: 'Événements',
+    columns: [
+      { key: 'year', label: 'Année', width: 'w-24' },
+      { key: 'title', label: 'Titre' },
+      { key: 'description', label: 'Description', truncate: 90 },
+    ],
+    fields: [
+      { key: 'year', label: 'Année / période', type: 'text', required: true },
+      { key: 'title', label: 'Titre', type: 'text', required: true },
+      { key: 'description', label: 'Description', type: 'textarea', required: true, rows: 4 },
+    ],
+  },
+  biographyChapters: {
+    title: 'Chapitres biographiques',
+    subtitle: 'Grands chapitres de la vie du Pasteur',
+    publicPath: '/biographie',
+    collection: 'biographyChapters',
+    label: 'Chapitre',
+    labelPlural: 'Chapitres',
+    columns: [
+      { key: 'title', label: 'Titre' },
+      { key: 'summary', label: 'Résumé', truncate: 100 },
+    ],
+    fields: [
+      { key: 'title', label: 'Titre', type: 'text', required: true },
+      { key: 'summary', label: 'Résumé', type: 'textarea', required: true, rows: 3 },
+    ],
+  },
+  nameMeanings: {
+    title: 'Signification des noms',
+    subtitle: 'Origine et sens des noms du Pasteur',
+    publicPath: '/biographie',
+    collection: 'nameMeanings',
+    label: 'Nom',
+    labelPlural: 'Noms',
+    columns: [
+      { key: 'name', label: 'Nom' },
+      { key: 'meaning', label: 'Signification' },
+    ],
+    fields: [
+      { key: 'name', label: 'Nom', type: 'text', required: true },
+      { key: 'meaning', label: 'Signification', type: 'text', required: true },
+    ],
+  },
+}
+
+export const siteSections = [
+  { key: 'dashboard', label: 'Tableau de bord', path: '/admin', icon: 'dashboard' },
+  { key: 'accueil', label: 'Accueil', path: '/admin/accueil', publicPath: '/', icon: 'home' },
+  { key: 'biographie', label: 'Biographie', path: '/admin/biographie', publicPath: '/biographie', icon: 'user' },
+  { key: 'ministere', label: 'Ministère', path: '/admin/ministere', publicPath: '/ministere', icon: 'ministry' },
+  { key: 'campagnes', label: 'Campagnes', path: '/admin/campagnes', publicPath: '/campagnes', icon: 'campaign' },
+  { key: 'temoignages', label: 'Témoignages', path: '/admin/temoignages', publicPath: '/temoignages', icon: 'testimony' },
+  { key: 'enseignements', label: 'Enseignements', path: '/admin/enseignements', publicPath: '/enseignements', icon: 'teaching' },
+  { key: 'hommages', label: 'Hommages', path: '/admin/hommages', publicPath: '/hommages', icon: 'hommage' },
+  { key: 'galerie', label: 'Galerie', path: '/admin/galerie', publicPath: '/galerie', icon: 'gallery' },
+  { key: 'contact', label: 'Contact', path: '/admin/contact', publicPath: '/contact', icon: 'contact' },
+]
