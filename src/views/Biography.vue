@@ -3,12 +3,13 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import AOS from 'aos'
 import BiographyTimeline from '../components/BiographyTimeline.vue'
 import BiographyChapters from '../components/BiographyChapters.vue'
-import {
-  pastor,
-  biographyEssentials,
-  nameMeanings,
-} from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
 import { pastorPortrait, biographyBannerImage } from '../data/images.js'
+
+const cms = useCmsStore()
+const pastor = cms.pastor
+const biographyEssentials = cms.biographyEssentials
+const nameMeanings = cms.nameMeanings
 
 const bannerImgRef = ref(null)
 const bannerCoverStyle = ref({})

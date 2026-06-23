@@ -1,8 +1,13 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import AOS from 'aos'
-import { galleryCategories, galleryItems } from '../data/content.js'
+import { galleryCategories } from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
+
+const cms = useCmsStore()
+const galleryItems = cms.galleryItems
 import GalleryLightbox from '../components/GalleryLightbox.vue'
+import GallerySubmitForm from '../components/forms/GallerySubmitForm.vue'
 
 const activeCategory = ref('all')
 const lightboxOpen = ref(false)
@@ -10,8 +15,8 @@ const lightboxIndex = ref(0)
 
 const filtered = computed(() =>
   activeCategory.value === 'all'
-    ? galleryItems
-    : galleryItems.filter((item) => item.category === activeCategory.value)
+    ? galleryItems.value
+    : galleryItems.value.filter((item) => item.category === activeCategory.value)
 )
 
 function openLightbox(index) {
@@ -36,9 +41,12 @@ onMounted(() => AOS.refresh())
         <h1 class="font-display text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">
           Moments du ministère
         </h1>
-        <p class="text-white/80 text-lg" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-white/80 text-lg mb-8" data-aos="fade-up" data-aos-delay="200">
           Campagnes, église, moments historiques et ministère international.
         </p>
+        <div data-aos="fade-up" data-aos-delay="300">
+          <GallerySubmitForm />
+        </div>
       </div>
     </section>
 

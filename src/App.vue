@@ -1,16 +1,22 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch, onMounted } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 import AOS from 'aos'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import SplashScreen from './components/SplashScreen.vue'
 import MemorialFloatingButton from './components/MemorialFloatingButton.vue'
+import { useTheme } from './composables/useTheme.js'
 
 const route = useRoute()
+const { theme } = useTheme()
 
-// Uniquement au chargement complet : ouverture du site ou actualisation (F5 / bouton navigateur).
-const showSplash = ref(true)
+const authPublicPrefixes = ['/admin/signin', '/admin/reset-password']
+const isAdminRoute = computed(() => route.path.startsWith('/admin'))
+const isAuthPublicRoute = computed(() =>
+  authPublicPrefixes.some((prefix) => route.path.startsWith(prefix))
+)
+const showSplash = ref(!isAdminRoute.value)
 
 function onSplashComplete() {
   showSplash.value = false
@@ -21,6 +27,11 @@ function initAos() {
   setTimeout(() => AOS.refresh(), 150)
 }
 
+function syncSiteDarkClass() {
+  const allowPublicDark = !isAdminRoute.value || isAuthPublicRoute.value
+  document.documentElement.classList.toggle('dark', allowPublicDark && theme.value === 'dark')
+}
+
 watch(showSplash, (visible) => {
   if (!visible) initAos()
 })
@@ -28,17 +39,31 @@ watch(showSplash, (visible) => {
 watch(
   () => route.path,
   () => {
-    if (!showSplash.value) {
+    if (isAdminRoute.value) {
+      showSplash.value = false
+    }
+
+    if (!showSplash.value && !isAdminRoute.value) {
       setTimeout(() => AOS.refresh(), 100)
     }
+
+    syncSiteDarkClass()
   }
 )
+
+watch(theme, syncSiteDarkClass)
+
+onMounted(() => {
+  syncSiteDarkClass()
+})
 </script>
 
 <template>
-  <SplashScreen v-if="showSplash" @complete="onSplashComplete" />
+  <SplashScreen v-if="showSplash && !isAdminRoute" @complete="onSplashComplete" />
 
-  <div v-if="!showSplash" class="min-h-screen flex flex-col">
+  <RouterView v-if="isAdminRoute" />
+
+  <div v-else-if="!showSplash" class="min-h-screen flex flex-col">
     <Navbar />
     <main class="flex-1">
       <RouterView />

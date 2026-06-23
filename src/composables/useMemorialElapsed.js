@@ -1,5 +1,8 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { pastor } from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
+
+const cms = useCmsStore()
+const pastor = cms.pastor
 
 const MS_PER_DAY = 86_400_000
 const now = ref(new Date())
@@ -68,12 +71,11 @@ export function useMemorialElapsed() {
   onMounted(startMemorialClock)
   onUnmounted(stopMemorialClock)
 
-  const departureDate = computed(() => parseLocalISODate(pastor.deathDateISO))
+  const departureDate = computed(() => parseLocalISODate(pastor.value.deathDateISO))
 
   const daysSinceDeparture = computed(() => {
     const elapsed = diffCalendarDays(departureDate.value, now.value)
     if (elapsed < 0) return 0
-    // Jour 1 = date du décès (comptage mémorial inclusif).
     return elapsed + 1
   })
 
@@ -85,10 +87,13 @@ export function useMemorialElapsed() {
     })
   )
 
+  const departureLabel = computed(() => pastor.value.deathDate)
+  const departurePlace = computed(() => pastor.value.deathPlace)
+
   return {
     daysSinceDeparture,
-    departureLabel: pastor.deathDate,
-    departurePlace: pastor.deathPlace,
+    departureLabel,
+    departurePlace,
     todayFormatted,
   }
 }

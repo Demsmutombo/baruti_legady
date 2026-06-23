@@ -1,5 +1,8 @@
 <script setup>
-import { biographyEvents } from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
+
+const cms = useCmsStore()
+const biographyEvents = cms.biographyEvents
 </script>
 
 <template>

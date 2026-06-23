@@ -1,8 +1,13 @@
 <script setup>
 import { onMounted } from 'vue'
 import AOS from 'aos'
-import { ministrySections, pastor, biographyEssentials } from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
 import { heroImage, pastorPreaching } from '../data/images.js'
+
+const cms = useCmsStore()
+const ministrySections = cms.ministrySections
+const pastor = cms.pastor
+const biographyEssentials = cms.biographyEssentials
 
 onMounted(() => AOS.refresh())
 </script>

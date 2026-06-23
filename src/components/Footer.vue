@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import { contact } from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
+
+const cms = useCmsStore()
+const contact = cms.contact
 </script>
 
 <template>

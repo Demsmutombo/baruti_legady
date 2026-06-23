@@ -71,9 +71,14 @@ export const testimonyFilters = [
 ]
 
 export const testimonyCategoryLabels = {
-  guérison: "Guérison",
-  miracle: "Miracle",
-  foi: "Foi",
-  ministère: "Ministère",
-  surnaturel: "Surnaturel",
+  guérison: 'Guérison',
+  miracle: 'Miracle',
+  foi: 'Foi',
+  ministère: 'Ministère',
+  surnaturel: 'Surnaturel',
 }
+
+export const testimonyCategoryOptions = Object.entries(testimonyCategoryLabels).map(([value, label]) => ({
+  value,
+  label,
+}))

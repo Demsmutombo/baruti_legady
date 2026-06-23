@@ -2,8 +2,11 @@
 import { RouterLink } from 'vue-router'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
-import { pastor } from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
 import { heroCarouselImages } from '../data/images.js'
+
+const cms = useCmsStore()
+const pastor = cms.pastor
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 

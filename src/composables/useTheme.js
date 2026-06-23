@@ -3,8 +3,17 @@ import { ref, computed } from 'vue'
 const STORAGE_KEY = 'baruti-theme'
 const theme = ref('light')
 
+const AUTH_PUBLIC_PREFIXES = ['/admin/signin', '/admin/reset-password']
+
+function isAdminRoute() {
+  if (typeof window === 'undefined') return false
+  const path = window.location.pathname
+  if (!path.startsWith('/admin')) return false
+  return !AUTH_PUBLIC_PREFIXES.some((prefix) => path.startsWith(prefix))
+}
+
 function applyTheme(value) {
-  document.documentElement.classList.toggle('dark', value === 'dark')
+  document.documentElement.classList.toggle('dark', value === 'dark' && !isAdminRoute())
   document.documentElement.dataset.theme = value
 }
 

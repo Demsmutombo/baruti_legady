@@ -18,6 +18,7 @@
     <script>
       (function () {
         try {
+          if (location.pathname.startsWith('/admin')) return
           var theme = localStorage.getItem('baruti-theme')
           var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
           if (theme === 'dark' || (!theme && prefersDark)) {

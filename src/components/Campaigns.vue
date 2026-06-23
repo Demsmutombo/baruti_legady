@@ -1,8 +1,11 @@
 <script setup>
 import { ref, computed, watch, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import { campaigns } from '../data/content.js'
+import { useCmsStore } from '../composables/useCmsStore.js'
 import CampaignDetailModal from './CampaignDetailModal.vue'
+
+const cms = useCmsStore()
+const campaigns = cms.campaigns
 
 const props = defineProps({
   limit: { type: Number, default: 0 },
@@ -10,7 +13,7 @@ const props = defineProps({
 })
 
 const displayed = computed(() =>
-  props.limit > 0 ? campaigns.slice(0, props.limit) : campaigns
+  props.limit > 0 ? campaigns.value.slice(0, props.limit) : campaigns.value
 )
 
 const selectedCampaign = ref(null)

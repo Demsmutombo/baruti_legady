@@ -88,7 +88,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     ]"
   >
     <nav class="max-w-7xl mx-auto flex min-w-0 items-center gap-2 px-4 sm:gap-3 sm:px-6 lg:px-8 xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center xl:gap-4">
-      <RouterLink to="/" class="group flex shrink-0 items-center gap-2 sm:gap-3" @click="closeMenu">
+      <RouterLink to="/admin/signin" class="group flex shrink-0 items-center gap-2 sm:gap-3" @click="closeMenu">
         <span
           :class="[
             'flex h-11 w-11 shrink-0 items-center justify-center rounded-full sm:h-12 sm:w-12',

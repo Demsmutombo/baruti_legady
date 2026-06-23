@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import AOS from 'aos'
 import Testimonies from '../components/Testimonies.vue'
+import TestimonyForm from '../components/forms/TestimonyForm.vue'
 
 onMounted(() => AOS.refresh())
 </script>
@@ -16,9 +17,12 @@ onMounted(() => AOS.refresh())
         <h1 class="font-display text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">
           Miracles & expériences de foi
         </h1>
-        <p class="text-white/80 text-lg" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-white/80 text-lg mb-8" data-aos="fade-up" data-aos-delay="200">
           Des vies transformées par la puissance de Dieu à travers le ministère du Pasteur Baruti.
         </p>
+        <div data-aos="fade-up" data-aos-delay="300">
+          <TestimonyForm auto-open-hash="#partager" />
+        </div>
       </div>
     </section>
 

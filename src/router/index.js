@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import adminRoutes, { applyAdminGuards } from './admin.js'
 
 const routes = [
   { path: '/', name: 'Home', component: () => import('../views/Home.vue') },
@@ -10,6 +11,7 @@ const routes = [
   { path: '/hommages', name: 'Hommages', component: () => import('../views/Hommages.vue') },
   { path: '/galerie', name: 'Gallery', component: () => import('../views/Gallery.vue') },
   { path: '/contact', name: 'Contact', component: () => import('../views/Contact.vue') },
+  adminRoutes,
 ]
 
 const router = createRouter({
@@ -19,5 +21,7 @@ const router = createRouter({
     return { top: 0 }
   },
 })
+
+applyAdminGuards(router)
 
 export default router

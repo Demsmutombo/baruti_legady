@@ -4,8 +4,13 @@ import AOS from 'aos'
 import Hero from '../components/Hero.vue'
 import Campaigns from '../components/Campaigns.vue'
 import Testimonies from '../components/Testimonies.vue'
-import { highlights, pastor } from '../data/content.js'
+import TestimonyForm from '../components/forms/TestimonyForm.vue'
+import { useCmsStore } from '../composables/useCmsStore.js'
 import { RouterLink } from 'vue-router'
+
+const cms = useCmsStore()
+const highlights = cms.highlights
+const pastor = cms.pastor
 
 onMounted(() => AOS.refresh())
 </script>
@@ -78,13 +83,18 @@ onMounted(() => AOS.refresh())
           </h2>
         </div>
         <Testimonies />
-        <div class="text-center mt-8">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <RouterLink
             to="/temoignages"
             class="inline-block px-8 py-3 bg-gold text-deep-blue font-semibold rounded-sm hover:bg-gold-light transition-colors"
           >
             Tous les témoignages
           </RouterLink>
+          <TestimonyForm
+            button-label="Partager le vôtre"
+            button-variant="outline"
+            auto-open-hash=""
+          />
         </div>
       </div>
     </section>
