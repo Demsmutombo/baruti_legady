@@ -6,7 +6,16 @@ export const testimonyCategoryOptions = [
   { value: 'surnaturel', label: 'Surnaturel' },
 ]
 
+export const ceremonyTypeOptions = [
+  { value: 'veillee', label: 'Veillée mortuaire' },
+  { value: 'culte', label: 'Culte d\'hommage' },
+  { value: 'inhumation', label: 'Inhumation' },
+  { value: 'commemoration', label: 'Commémoration' },
+  { value: 'autre', label: 'Autre' },
+]
+
 export const galleryCategoryOptions = [
+  { value: 'memorial', label: 'BK Memorial' },
   { value: 'campaigns', label: 'Campagnes' },
   { value: 'church', label: 'Église' },
   { value: 'historical', label: 'Moments historiques' },
@@ -113,6 +122,31 @@ export const crudResources = {
       { key: 'mediaUrl', label: 'Média (URL)', type: 'textarea', rows: 2 },
     ],
   },
+  ceremonies: {
+    title: 'Cérémonies',
+    subtitle: 'Veillées, cultes d\'hommage et commémorations',
+    publicPath: '/ceremonies',
+    collection: 'ceremonies',
+    label: 'Cérémonie',
+    labelPlural: 'Cérémonies',
+    columns: [
+      { key: 'imageIndex', label: 'Photo', type: 'image' },
+      { key: 'title', label: 'Titre' },
+      { key: 'type', label: 'Type', format: 'ceremonyType' },
+      { key: 'date', label: 'Date', width: 'w-28' },
+      { key: 'city', label: 'Ville' },
+    ],
+    fields: [
+      { key: 'title', label: 'Titre', type: 'text', required: true },
+      { key: 'type', label: 'Type', type: 'select', options: ceremonyTypeOptions, required: true },
+      { key: 'date', label: 'Date', type: 'text', required: true, placeholder: 'Ex. 8 juin 2024' },
+      { key: 'time', label: 'Heure', type: 'text', placeholder: 'Ex. 18h00' },
+      { key: 'location', label: 'Lieu', type: 'text', required: true },
+      { key: 'city', label: 'Ville / pays', type: 'text', required: true },
+      { key: 'description', label: 'Description', type: 'textarea', required: true, rows: 5 },
+      { key: 'imageIndex', label: 'Photo (bk)', type: 'imageIndex' },
+    ],
+  },
   galleryItems: {
     title: 'Galerie',
     subtitle: 'Photos du mémorial et du ministère',
@@ -208,6 +242,7 @@ export const siteSections = [
   { key: 'temoignages', label: 'Témoignages', path: '/admin/temoignages', publicPath: '/temoignages', icon: 'testimony' },
   { key: 'enseignements', label: 'Enseignements', path: '/admin/enseignements', publicPath: '/enseignements', icon: 'teaching' },
   { key: 'hommages', label: 'Hommages', path: '/admin/hommages', publicPath: '/hommages', icon: 'hommage' },
+  { key: 'ceremonies', label: 'Cérémonies', path: '/admin/ceremonies', publicPath: '/ceremonies', icon: 'ceremony' },
   { key: 'galerie', label: 'Galerie', path: '/admin/galerie', publicPath: '/galerie', icon: 'gallery' },
   { key: 'contact', label: 'Contact', path: '/admin/contact', publicPath: '/contact', icon: 'contact' },
 ]

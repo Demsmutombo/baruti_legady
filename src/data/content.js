@@ -139,6 +139,7 @@ export const ministrySections = [
 
 export const galleryCategories = [
   { id: "all", label: "Tout" },
+  { id: "memorial", label: "BK Memorial" },
   { id: "campaigns", label: "Campagnes" },
   { id: "church", label: "Église" },
   { id: "historical", label: "Moments historiques" },

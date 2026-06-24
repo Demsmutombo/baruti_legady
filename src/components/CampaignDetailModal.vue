@@ -21,7 +21,7 @@ const emit = defineEmits(['close'])
         <div class="absolute inset-0 bg-deep-blue/90 backdrop-blur-sm" @click="emit('close')" />
 
         <div
-          class="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl bg-white shadow-2xl"
+          class="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto scrollbar-hidden rounded-xl bg-white shadow-2xl"
           @click.stop
         >
           <button

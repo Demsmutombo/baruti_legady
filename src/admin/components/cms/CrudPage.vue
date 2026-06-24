@@ -124,7 +124,7 @@
               >
                 <div v-if="col.type === 'image'" class="admin-table-cell-lead">
                   <div class="admin-table-cell-thumb">
-                    <img :src="bk(item.imageIndex || 1)" alt="" />
+                    <img :src="item.customImage || bk(item.imageIndex || 1)" alt="" />
                   </div>
                 </div>
                 <span v-else-if="col.format === 'category'" class="admin-table-status admin-table-status--brand">
@@ -135,6 +135,12 @@
                   class="admin-table-status admin-table-status--neutral"
                 >
                   {{ formatGalleryCategory(item[col.key]) }}
+                </span>
+                <span
+                  v-else-if="col.format === 'ceremonyType'"
+                  class="admin-table-status admin-table-status--warning"
+                >
+                  {{ formatCeremonyType(item[col.key]) }}
                 </span>
                 <div v-else-if="colIndex === 0" class="admin-table-cell-lead">
                   <div class="admin-table-cell-avatar">{{ getInitials(item[col.key]) }}</div>
@@ -290,7 +296,7 @@ import AdminModal from '@admin/components/cms/AdminModal.vue'
 import { PlusIcon, TrashIcon } from '@admin/icons'
 import { useCmsStore } from '../../../composables/useCmsStore.js'
 import { bk, bkImages } from '../../../data/images.js'
-import { testimonyCategoryOptions, galleryCategoryOptions } from '@admin/config/crud.js'
+import { testimonyCategoryOptions, galleryCategoryOptions, ceremonyTypeOptions } from '@admin/config/crud.js'
 
 const props = defineProps({
   resourceKey: { type: String, required: true },
@@ -365,6 +371,10 @@ function formatCategory(value) {
 
 function formatGalleryCategory(value) {
   return galleryCategoryOptions.find((o) => o.value === value)?.label || value
+}
+
+function formatCeremonyType(value) {
+  return ceremonyTypeOptions.find((o) => o.value === value)?.label || value
 }
 
 function openCreate() {

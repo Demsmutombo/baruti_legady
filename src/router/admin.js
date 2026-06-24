@@ -48,6 +48,12 @@ const adminChildren = [
     meta: { title: 'Hommages', resource: 'hommages' },
   },
   {
+    path: 'ceremonies',
+    name: 'AdminCeremonies',
+    component: () => import('../admin/views/manage/ResourceCrud.vue'),
+    meta: { title: 'Cérémonies', resource: 'ceremonies' },
+  },
+  {
     path: 'galerie',
     name: 'AdminGallery',
     component: () => import('../admin/views/manage/ResourceCrud.vue'),

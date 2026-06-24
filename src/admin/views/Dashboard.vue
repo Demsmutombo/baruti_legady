@@ -135,6 +135,7 @@ const sectionIcons = {
   temoignages: '💬',
   enseignements: '📖',
   hommages: '🕊',
+  ceremonies: '🕯',
   galerie: '🖼',
   contact: '✉',
 }
@@ -149,6 +150,7 @@ const countMap = computed(() => {
     temoignages: s.testimonies,
     enseignements: s.teachings,
     hommages: s.hommages,
+    ceremonies: s.ceremonies,
     galerie: s.gallery,
     contact: 1,
   }

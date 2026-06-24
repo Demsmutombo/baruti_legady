@@ -9,6 +9,7 @@ const routes = [
   { path: '/temoignages', name: 'Testimonies', component: () => import('../views/TestimoniesPage.vue') },
   { path: '/enseignements', name: 'Teachings', component: () => import('../views/Teachings.vue') },
   { path: '/hommages', name: 'Hommages', component: () => import('../views/Hommages.vue') },
+  { path: '/ceremonies', name: 'Ceremonies', component: () => import('../views/Ceremonies.vue') },
   { path: '/galerie', name: 'Gallery', component: () => import('../views/Gallery.vue') },
   { path: '/contact', name: 'Contact', component: () => import('../views/Contact.vue') },
   adminRoutes,

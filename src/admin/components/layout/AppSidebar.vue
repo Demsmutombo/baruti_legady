@@ -20,9 +20,13 @@
         :class="['mb-6 flex items-center gap-3', showLabels ? 'justify-start' : 'justify-center']"
       >
         <span
-          class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-brand-500 shadow-theme-xs"
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-deep-blue p-[2px] shadow-theme-xs"
         >
-          <img :src="logoSrc" alt="" class="h-full w-full object-cover" />
+          <img
+            :src="logoSrc"
+            alt="Baruti Legacy Foundation"
+            class="h-full w-full rounded-full object-cover object-top"
+          />
         </span>
         <span
           v-if="showLabels"
@@ -93,16 +97,16 @@ import {
   ChatIcon,
   DocsIcon,
   MailIcon,
+  CalenderIcon,
   ListIcon,
   BoxCubeIcon,
   HorizontalDots,
 } from '../../icons'
 import { useSidebar } from '@admin/composables/useSidebar'
-import { pastorPortrait } from '@admin/data/site.js'
+import logoSrc from '../../../assets/anime.png'
 import SidebarWidget from './SidebarWidget.vue'
 
 const route = useRoute()
-const logoSrc = pastorPortrait
 const { isExpanded, isMobileOpen, isHovered } = useSidebar()
 
 const showLabels = computed(() => isExpanded.value || isHovered.value || isMobileOpen.value)
@@ -116,6 +120,7 @@ const menuItems = [
   { name: 'Témoignages', path: '/admin/temoignages', icon: ChatIcon },
   { name: 'Enseignements', path: '/admin/enseignements', icon: DocsIcon },
   { name: 'Hommages', path: '/admin/hommages', icon: ListIcon },
+  { name: 'Cérémonies', path: '/admin/ceremonies', icon: CalenderIcon },
   { name: 'Galerie', path: '/admin/galerie', icon: BoxCubeIcon, badge: 'NEW' },
   { name: 'Contact', path: '/admin/contact', icon: MailIcon },
 ]

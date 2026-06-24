@@ -1,3 +1,5 @@
+import { ceremonyPhotos } from './ceremonyImages.js'
+
 const modules = import.meta.glob('../assets/bk/*.jpeg', { eager: true, import: 'default' })
 
 function extractNum(path) {
@@ -79,7 +81,10 @@ const galleryMeta = {
 
 const defaultCategories = ['historical', 'campaigns', 'church', 'international']
 
-export const galleryItems = bkImages.map((image, index) => {
+const ceremonyGalleryCaption = 'BK MEMORIAL — Mercredi 23.06.2026'
+const CEREMONY_GALLERY_BASE_ID = 1000
+
+const bkGalleryItems = bkImages.map((image, index) => {
   const num = index + 1
   const meta = galleryMeta[num]
   return {
@@ -89,6 +94,16 @@ export const galleryItems = bkImages.map((image, index) => {
     caption: meta?.caption ?? `Pasteur Baruti Kasongo — Ministère (${num})`,
   }
 })
+
+const ceremonyGalleryItems = ceremonyPhotos.map((image, index) => ({
+  id: CEREMONY_GALLERY_BASE_ID + index,
+  image,
+  customImage: image,
+  category: 'memorial',
+  caption: ceremonyGalleryCaption,
+}))
+
+export const galleryItems = [...bkGalleryItems, ...ceremonyGalleryItems]
 
 /** Images assignées aux campagnes (ordre = campaigns.js) */
 export const campaignImages = [

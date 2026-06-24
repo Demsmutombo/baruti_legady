@@ -30,6 +30,8 @@ const contact = cms.contact
             <li><RouterLink to="/ministere" class="hover:text-gold transition-colors">Ministère</RouterLink></li>
             <li><RouterLink to="/campagnes" class="hover:text-gold transition-colors">Campagnes</RouterLink></li>
             <li><RouterLink to="/temoignages" class="hover:text-gold transition-colors">Témoignages</RouterLink></li>
+            <li><RouterLink to="/hommages" class="hover:text-gold transition-colors">Hommages</RouterLink></li>
+            <li><RouterLink to="/ceremonies" class="hover:text-gold transition-colors">Cérémonies</RouterLink></li>
             <li><RouterLink to="/galerie" class="hover:text-gold transition-colors">Galerie</RouterLink></li>
             <li><RouterLink to="/contact" class="hover:text-gold transition-colors">Contact</RouterLink></li>
           </ul>

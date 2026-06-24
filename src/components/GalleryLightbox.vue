@@ -1,8 +1,7 @@
 <script setup>
 import { watch, onMounted, onUnmounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Keyboard } from 'swiper/modules'
-import 'swiper/css/navigation'
+import { Keyboard } from 'swiper/modules'
 
 const props = defineProps({
   items: { type: Array, default: () => [] },
@@ -12,7 +11,7 @@ const props = defineProps({
 
 const emit = defineEmits(['close'])
 
-const modules = [Navigation, Keyboard]
+const modules = [Keyboard]
 
 function onKeydown(event) {
   if (event.key === 'Escape' && props.open) {
@@ -67,7 +66,6 @@ onUnmounted(() => {
             :initial-slide="startIndex"
             :slides-per-view="1"
             :space-between="16"
-            :navigation="true"
             :keyboard="{ enabled: true }"
             :loop="items.length > 1"
             class="gallery-lightbox-swiper w-full h-full max-h-[70vh]"
@@ -100,15 +98,5 @@ onUnmounted(() => {
 .lightbox-fade-enter-from,
 .lightbox-fade-leave-to {
   opacity: 0;
-}
-
-:deep(.gallery-lightbox-swiper .swiper-button-next),
-:deep(.gallery-lightbox-swiper .swiper-button-prev) {
-  color: #c9a227;
-}
-
-:deep(.gallery-lightbox-swiper .swiper-button-next::after),
-:deep(.gallery-lightbox-swiper .swiper-button-prev::after) {
-  font-size: 1.5rem;
 }
 </style>

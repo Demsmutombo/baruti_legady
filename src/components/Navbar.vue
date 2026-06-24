@@ -17,6 +17,7 @@ const links = [
   { to: '/temoignages', label: 'Témoignages' },
   { to: '/enseignements', label: 'Enseignements' },
   { to: '/hommages', label: 'Hommages' },
+  { to: '/ceremonies', label: 'Cérémonies' },
   { to: '/galerie', label: 'Galerie' },
   { to: '/contact', label: 'Contact' },
 ]

@@ -349,6 +349,27 @@ body {
   max-height: min(90vh, 52rem);
   overflow-y: auto;
   padding: 2rem 1.5rem 1.75rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.public-form-modal-body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Scroll actif, barre invisible — modales & panneaux */
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
 }
 
 @media (min-width: 640px) {
@@ -649,4 +670,278 @@ body {
   width: 100%;
   max-height: 16rem;
   object-fit: cover;
+}
+
+/* Cérémonies — frise chronologique */
+.ceremony-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ceremony-timeline::before {
+  content: '';
+  position: absolute;
+  left: 1.125rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, #c9a227, #0f2847);
+}
+
+@media (min-width: 768px) {
+  .ceremony-timeline::before {
+    left: 1.375rem;
+  }
+}
+
+.ceremony-timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .ceremony-timeline__item {
+    grid-template-columns: 2.75rem 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.ceremony-timeline__marker {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.25rem;
+}
+
+.ceremony-timeline__dot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 9999px;
+  border: 2px solid #c9a227;
+  background: #f5f5f0;
+  box-shadow: 0 0 0 4px rgb(201 162 39 / 0.2);
+}
+
+.dark .ceremony-timeline__dot {
+  background: #111f33;
+}
+
+.ceremony-timeline__card {
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgb(15 40 71 / 0.08);
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgb(15 40 71 / 0.08);
+}
+
+.dark .ceremony-timeline__card {
+  border-color: rgb(255 255 255 / 0.1);
+  background: var(--color-card);
+}
+
+.ceremony-timeline__image-wrap {
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+}
+
+.ceremony-timeline__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ceremony-timeline__body {
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .ceremony-timeline__body {
+    padding: 1.5rem 1.75rem 1.75rem;
+  }
+}
+
+.ceremony-timeline__badge {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: rgb(201 162 39 / 0.15);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #96761a;
+}
+
+.dark .ceremony-timeline__badge {
+  color: #e8d48b;
+}
+
+.ceremony-timeline__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.dark .ceremony-timeline__meta {
+  color: #94a3b8;
+}
+
+.ceremony-timeline__meta li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.ceremony-timeline__meta svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: #c9a227;
+}
+
+.ceremony-timeline__meta--center {
+  align-items: center;
+}
+
+.ceremony-hero-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgb(201 162 39 / 0.25);
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.ceremony-hero-image__img {
+  display: block;
+  width: 100%;
+  max-height: 28rem;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.ceremony-hero-image:hover .ceremony-hero-image__img,
+.ceremony-hero-image:focus-visible .ceremony-hero-image__img {
+  transform: scale(1.03);
+}
+
+.ceremony-hero-image__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1rem;
+  background: linear-gradient(to top, rgb(15 40 71 / 0.55), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ceremony-hero-image:hover .ceremony-hero-image__overlay,
+.ceremony-hero-image:focus-visible .ceremony-hero-image__overlay {
+  opacity: 1;
+}
+
+.ceremony-hero-image__hint {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e8d48b;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(232 212 139 / 0.4);
+  background: rgb(15 40 71 / 0.65);
+}
+
+.ceremony-gallery {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .ceremony-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ceremony-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.ceremony-gallery__item {
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgb(15 40 71 / 0.08);
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.dark .ceremony-gallery__item {
+  border-color: rgb(255 255 255 / 0.1);
+  background: var(--color-card);
+}
+
+.ceremony-gallery__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s ease;
+}
+
+.ceremony-gallery__item:hover .ceremony-gallery__image,
+.ceremony-gallery__item:focus-visible .ceremony-gallery__image {
+  transform: scale(1.05);
+}
+
+.ceremony-gallery__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgb(15 40 71 / 0.06);
+}
+
+.dark .ceremony-gallery__caption {
+  border-top-color: rgb(255 255 255 / 0.08);
+}
+
+.ceremony-gallery__caption-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c9a227;
+}
+
+.ceremony-gallery__caption-text {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.dark .ceremony-gallery__caption-text {
+  color: #94a3b8;
 }
