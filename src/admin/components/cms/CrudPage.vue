@@ -197,61 +197,70 @@
     <admin-modal
       :open="modalOpen"
       :title="(editingId ? 'Modifier' : 'Ajouter') + ' — ' + config.label"
+      :editing-label="editingId ? 'Modification' : 'Nouvel élément'"
       subtitle="Les modifications sont enregistrées localement et visibles sur le site public."
       size="lg"
       @close="closeModal"
     >
-      <form id="crud-form" class="space-y-4" @submit.prevent="save">
-        <div
-          v-for="field in config.fields"
-          :key="field.key"
-          :class="field.full ? '' : ''"
-        >
-          <label class="admin-label">{{ field.label }}</label>
-
-          <select
-            v-if="field.type === 'select'"
-            v-model="form[field.key]"
-            class="admin-select"
-            :required="field.required"
+      <form id="crud-form" class="admin-crud-form" @submit.prevent="save">
+        <div class="admin-crud-form__grid">
+          <div
+            v-for="field in config.fields"
+            :key="field.key"
+            class="admin-form-field"
+            :class="{ 'admin-form-field--full': isFullWidthField(field) }"
           >
-            <option v-for="opt in field.options" :key="opt.value" :value="opt.value">
-              {{ opt.label }}
-            </option>
-          </select>
+            <label class="admin-label" :class="{ 'admin-label-required': field.required }">
+              {{ field.label }}
+            </label>
 
-          <textarea
-            v-else-if="field.type === 'textarea'"
-            v-model="form[field.key]"
-            :rows="field.rows || 3"
-            class="admin-textarea"
-            :required="field.required"
-            :placeholder="field.placeholder"
-          />
+            <select
+              v-if="field.type === 'select'"
+              v-model="form[field.key]"
+              class="admin-select"
+              :required="field.required"
+            >
+              <option v-for="opt in field.options" :key="opt.value" :value="opt.value">
+                {{ opt.label }}
+              </option>
+            </select>
 
-          <div v-else-if="field.type === 'imageIndex'" class="flex flex-col gap-3 sm:flex-row sm:items-start">
-            <div class="flex-1">
-              <select v-model.number="form[field.key]" class="admin-select" required>
-                <option v-for="n in bkImages.length" :key="n" :value="n">
-                  Photo bk ({{ n }})
-                </option>
-              </select>
+            <textarea
+              v-else-if="field.type === 'textarea'"
+              v-model="form[field.key]"
+              :rows="field.rows || 3"
+              class="admin-textarea"
+              :required="field.required"
+              :placeholder="field.placeholder"
+            />
+
+            <div
+              v-else-if="field.type === 'imageIndex'"
+              class="admin-form-image-picker flex flex-col gap-3 rounded-xl border border-gray-200 bg-gray-50/80 p-3 dark:border-gray-700 dark:bg-white/[0.03] sm:flex-row sm:items-center"
+            >
+              <div class="flex-1">
+                <select v-model.number="form[field.key]" class="admin-select" required>
+                  <option v-for="n in bkImages.length" :key="n" :value="n">
+                    Photo bk ({{ n }})
+                  </option>
+                </select>
+              </div>
+              <img
+                :src="bk(form[field.key] || 1)"
+                alt="Aperçu"
+                class="h-24 w-24 shrink-0 rounded-xl object-cover ring-2 ring-brand-500/25"
+              />
             </div>
-            <img
-              :src="bk(form[field.key] || 1)"
-              alt="Aperçu"
-              class="h-24 w-24 shrink-0 rounded-xl object-cover ring-2 ring-brand-500/25"
+
+            <input
+              v-else
+              v-model="form[field.key]"
+              type="text"
+              class="admin-input"
+              :required="field.required"
+              :placeholder="field.placeholder"
             />
           </div>
-
-          <input
-            v-else
-            v-model="form[field.key]"
-            type="text"
-            class="admin-input"
-            :required="field.required"
-            :placeholder="field.placeholder"
-          />
         </div>
       </form>
 
@@ -375,6 +384,15 @@ function formatGalleryCategory(value) {
 
 function formatCeremonyType(value) {
   return ceremonyTypeOptions.find((o) => o.value === value)?.label || value
+}
+
+const halfWidthFieldKeys = new Set(['date', 'time', 'location', 'city', 'year', 'region', 'country'])
+
+function isFullWidthField(field) {
+  if (field.full || field.col === 'full') return true
+  if (field.col === 'half') return false
+  if (field.type === 'textarea' || field.type === 'imageIndex') return true
+  return !halfWidthFieldKeys.has(field.key)
 }
 
 function openCreate() {

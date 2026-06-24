@@ -1,5 +1,5 @@
 <template>
-  <header class="admin-header sticky top-0 z-99999 w-full border-b shadow-theme-sm">
+  <header class="admin-header sticky top-0 z-9999 w-full border-b shadow-theme-sm">
     <div class="flex items-center justify-between gap-3 px-4 py-3 lg:gap-4 lg:px-6 lg:py-4">
       <!-- Gauche : menu + recherche -->
       <div class="flex min-w-0 flex-1 items-center gap-3">
