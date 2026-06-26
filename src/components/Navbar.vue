@@ -24,6 +24,7 @@ const navItems = [
     type: 'group',
     label: 'Activités',
     items: [
+      { to: '/carte', label: 'Carte', desc: 'Campagnes, témoignages et hommages' },
       { to: '/campagnes', label: 'Campagnes', desc: 'Missions d\'évangélisation' },
       { to: '/temoignages', label: 'Témoignages', desc: 'Vies transformées' },
       { to: '/enseignements', label: 'Enseignements', desc: 'Paroles et messages' },
@@ -38,6 +39,7 @@ const navItems = [
       { to: '/galerie', label: 'Galerie', desc: 'Photos et souvenirs' },
     ],
   },
+  { type: 'link', to: '/inscription', label: 'Inscription' },
   { type: 'link', to: '/contact', label: 'Contact' },
 ]
 

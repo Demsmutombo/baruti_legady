@@ -14,6 +14,7 @@ import {
   nameMeanings as defaultNameMeanings,
 } from '../data/biography.js'
 import { campaigns as defaultCampaigns } from '../data/campaigns.js'
+import { enrichCampaignLocation } from '../data/campaignLocations.js'
 import { testimonies as defaultTestimonies } from '../data/testimonies.js'
 import { galleryItems as defaultGalleryItems, bkImages, bk } from '../data/images.js'
 import { ceremonies as defaultCeremonies } from '../data/ceremonies.js'
@@ -38,6 +39,8 @@ function seedCampaigns() {
       country: c.country,
       description: c.description,
       imageIndex: imageToIndex(c.image),
+      coords: c.coords,
+      scope: c.scope,
     }))
   )
 }
@@ -75,6 +78,7 @@ function createDefaultState() {
     biographyEvents: withIds(defaultBioEvents),
     nameMeanings: withIds(defaultNameMeanings),
     contactMessages: [],
+    visitorRegistrations: [],
   }
 }
 
@@ -127,10 +131,10 @@ function nextId(list) {
 }
 
 function resolveCampaign(c) {
-  return {
+  return enrichCampaignLocation({
     ...c,
     image: bk(c.imageIndex || 1),
-  }
+  })
 }
 
 function resolveCeremony(c) {
@@ -191,6 +195,7 @@ const store = {
     ministrySections: state.ministrySections.length,
     biographyEvents: state.biographyEvents.length,
     biographyChapters: state.biographyChapters.length,
+    visitorRegistrations: state.visitorRegistrations.length,
   })),
 
   updatePastor(data) {

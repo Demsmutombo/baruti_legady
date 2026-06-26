@@ -13,12 +13,19 @@
       target="_blank"
       rel="noopener noreferrer"
       class="admin-sidebar-public-btn inline-flex w-full items-center justify-center gap-1.5 rounded-lg px-3 py-2.5 text-theme-sm font-semibold shadow-theme-xs transition"
+      @click="closeMobileSidebar"
     >
       Voir le site public
       <span aria-hidden="true">↗</span>
     </a>
   </div>
 </template>
+
+<script setup>
+import { useSidebar } from '@admin/composables/useSidebar'
+
+const { closeMobileSidebar } = useSidebar()
+</script>
 
 <style scoped>
 .admin-sidebar-public-btn {

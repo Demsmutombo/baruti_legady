@@ -11,7 +11,9 @@ const routes = [
   { path: '/hommages', name: 'Hommages', component: () => import('../views/Hommages.vue') },
   { path: '/ceremonies', name: 'Ceremonies', component: () => import('../views/Ceremonies.vue') },
   { path: '/galerie', name: 'Gallery', component: () => import('../views/Gallery.vue') },
+  { path: '/carte', name: 'MinistryMap', component: () => import('../views/MinistryMapPage.vue') },
   { path: '/contact', name: 'Contact', component: () => import('../views/Contact.vue') },
+  { path: '/inscription', name: 'Inscription', component: () => import('../views/Inscription.vue') },
   adminRoutes,
 ]
 

@@ -30,6 +30,12 @@ const adminChildren = [
     meta: { title: 'Campagnes', resource: 'campaigns' },
   },
   {
+    path: 'carte',
+    name: 'AdminMinistryMap',
+    component: () => import('../admin/views/manage/MinistryMapManage.vue'),
+    meta: { title: 'Carte du ministère' },
+  },
+  {
     path: 'temoignages',
     name: 'AdminTestimonies',
     component: () => import('../admin/views/manage/ResourceCrud.vue'),
@@ -64,6 +70,12 @@ const adminChildren = [
     name: 'AdminContact',
     component: () => import('../admin/views/manage/ContactManage.vue'),
     meta: { title: 'Contact' },
+  },
+  {
+    path: 'inscriptions',
+    name: 'AdminVisitorRegistrations',
+    component: () => import('../admin/views/manage/VisitorRegistrationsManage.vue'),
+    meta: { title: 'Inscriptions visiteurs' },
   },
   {
     path: 'error-404',

@@ -25,6 +25,7 @@
     "flatpickr": "^4.6.13",
     "gsap": "^3.15.0",
     "jsvectormap": "^1.6.0",
+    "leaflet": "^1.9.4",
     "lucide-vue-next": "^0.474.0",
     "swiper": "^12.2.0",
     "vue": "^3.5.34",

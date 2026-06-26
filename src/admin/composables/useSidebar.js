@@ -39,6 +39,10 @@ export function useSidebarProvider() {
     isMobileOpen.value = !isMobileOpen.value
   }
 
+  const closeMobileSidebar = () => {
+    isMobileOpen.value = false
+  }
+
   const setIsHovered = (value) => {
     isHovered.value = value
   }
@@ -59,6 +63,7 @@ export function useSidebarProvider() {
     openSubmenu,
     toggleSidebar,
     toggleMobileSidebar,
+    closeMobileSidebar,
     setIsHovered,
     setActiveItem,
     toggleSubmenu,

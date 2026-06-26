@@ -18,6 +18,7 @@
       <router-link
         to="/admin"
         :class="['mb-6 flex items-center gap-3', showLabels ? 'justify-start' : 'justify-center']"
+        @click="closeMobileSidebar"
       >
         <span
           class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-deep-blue p-[2px] shadow-theme-xs"
@@ -56,6 +57,7 @@
               isActive(item.path) ? 'admin-nav-btn-active' : 'admin-nav-btn-inactive',
               !showLabels ? 'justify-center px-2' : '',
             ]"
+            @click="closeMobileSidebar"
           >
             <span
               :class="[
@@ -86,7 +88,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   GridIcon,
@@ -94,9 +96,11 @@ import {
   UserCircleIcon,
   PageIcon,
   BoxIcon,
+  FlagIcon,
   ChatIcon,
   DocsIcon,
   MailIcon,
+  UserGroupIcon,
   CalenderIcon,
   ListIcon,
   BoxCubeIcon,
@@ -107,7 +111,12 @@ import logoSrc from '../../../assets/anime.png'
 import SidebarWidget from './SidebarWidget.vue'
 
 const route = useRoute()
-const { isExpanded, isMobileOpen, isHovered } = useSidebar()
+const { isExpanded, isMobileOpen, isHovered, closeMobileSidebar } = useSidebar()
+
+watch(
+  () => route.path,
+  () => closeMobileSidebar(),
+)
 
 const showLabels = computed(() => isExpanded.value || isHovered.value || isMobileOpen.value)
 
@@ -117,11 +126,13 @@ const menuItems = [
   { name: 'Biographie', path: '/admin/biographie', icon: UserCircleIcon },
   { name: 'Ministère', path: '/admin/ministere', icon: PageIcon },
   { name: 'Campagnes', path: '/admin/campagnes', icon: BoxIcon },
+  { name: 'Carte', path: '/admin/carte', icon: FlagIcon },
   { name: 'Témoignages', path: '/admin/temoignages', icon: ChatIcon },
   { name: 'Enseignements', path: '/admin/enseignements', icon: DocsIcon },
   { name: 'Hommages', path: '/admin/hommages', icon: ListIcon },
   { name: 'Cérémonies', path: '/admin/ceremonies', icon: CalenderIcon },
   { name: 'Galerie', path: '/admin/galerie', icon: BoxCubeIcon, badge: 'NEW' },
+  { name: 'Inscriptions', path: '/admin/inscriptions', icon: UserGroupIcon },
   { name: 'Contact', path: '/admin/contact', icon: MailIcon },
 ]
 

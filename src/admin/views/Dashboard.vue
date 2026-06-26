@@ -132,11 +132,13 @@ const sectionIcons = {
   biographie: '👤',
   ministere: '✝',
   campagnes: '🌍',
+  carte: '🗺',
   temoignages: '💬',
   enseignements: '📖',
   hommages: '🕊',
   ceremonies: '🕯',
   galerie: '🖼',
+  inscriptions: '👥',
   contact: '✉',
 }
 
@@ -147,11 +149,13 @@ const countMap = computed(() => {
     biographie: s.biographyEvents + s.biographyChapters + cms.list('nameMeanings').length,
     ministere: s.ministrySections,
     campagnes: s.campaigns,
+    carte: s.campaigns + s.testimonies + s.hommages,
     temoignages: s.testimonies,
     enseignements: s.teachings,
     hommages: s.hommages,
     ceremonies: s.ceremonies,
     galerie: s.gallery,
+    inscriptions: s.visitorRegistrations,
     contact: 1,
   }
 })

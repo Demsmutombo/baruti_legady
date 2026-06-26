@@ -122,25 +122,25 @@ onUnmounted(() => {
             <div class="bio-details">
               <div class="bio-detail-item">
                 <p class="bio-detail-label">Naissance</p>
-                <p class="bio-detail-value">
+                <p class="bio-detail-value text-deep-blue">
                   {{ biographyEssentials.birth.date }} · {{ biographyEssentials.birth.place }}
                 </p>
-                <p class="bio-detail-sub">{{ biographyEssentials.birth.detail }}</p>
+                <p class="bio-detail-sub text-muted">{{ biographyEssentials.birth.detail }}</p>
               </div>
               <div class="bio-detail-item">
                 <p class="bio-detail-label">Décès</p>
-                <p class="bio-detail-value">
+                <p class="bio-detail-value text-deep-blue">
                   {{ biographyEssentials.death.date }} · {{ biographyEssentials.death.place }}
                 </p>
-                <p class="bio-detail-sub">{{ biographyEssentials.death.detail }}</p>
+                <p class="bio-detail-sub text-muted">{{ biographyEssentials.death.detail }}</p>
               </div>
               <div class="bio-detail-item">
                 <p class="bio-detail-label">Profession</p>
-                <p class="bio-detail-value leading-relaxed">{{ biographyEssentials.profession }}</p>
+                <p class="bio-detail-value text-deep-blue leading-relaxed">{{ biographyEssentials.profession }}</p>
               </div>
               <div class="bio-detail-item">
                 <p class="bio-detail-label">Église</p>
-                <p class="bio-detail-value leading-relaxed">{{ biographyEssentials.church }}</p>
+                <p class="bio-detail-value text-deep-blue leading-relaxed">{{ biographyEssentials.church }}</p>
               </div>
             </div>
           </div>
@@ -349,14 +349,12 @@ onUnmounted(() => {
 .bio-detail-value {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #0f2847;
   line-height: 1.5;
 }
 
 .bio-detail-sub {
   margin-top: 0.2rem;
   font-size: 0.8125rem;
-  color: #6b7280;
 }
 
 :global(.dark) .bio-essential-body,
@@ -368,13 +366,5 @@ onUnmounted(() => {
   :global(.dark) .bio-identity {
     border-right-color: rgb(255 255 255 / 0.1);
   }
-}
-
-:global(.dark) .bio-detail-value {
-  color: #e2e8f0;
-}
-
-:global(.dark) .bio-detail-sub {
-  color: #94a3b8;
 }
 </style>
